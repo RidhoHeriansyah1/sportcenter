@@ -1,9 +1,35 @@
 @extends('backend.layouts.master')
 @section('content')
-<div class="container-fluid">
 <div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0">Update</h4>
 
-    <div class="col-lg-12">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
+                    <li class="breadcrumb-item active">Update</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $item)
+        <li>{{ $item }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+@if (Session::get('success'))
+
+<div class="alert alert-success">
+    {{ Session::get('success') }}
+</div>
+@endif
 
         <!-- Circle Buttons -->
         <div class="card shadow mb-4">
@@ -37,13 +63,11 @@
                         <input type="number" class="form-control" value="{{ $data->status }}" name="status" placeholder="Status">
                     </div>
                     <div class="mb-3 float-right">
-                        <a href="/category" class="btn btn-secondary"><i class="fa fa-angle-double-left"></i> Kembali</a>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Update</button>
+                        <a href="/category" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
+                        <button type="submit" class="btn btn-primary"><i class="lar la-save"></i> Update</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
-</div>
-</div>
+
 @endsection

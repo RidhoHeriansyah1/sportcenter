@@ -20,5 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('backend.dashboard.index');
 });
+Route::get('/login', function () {
+    return view('backend.auth.login');
+});
 
 Route::resource('category', CategoryController::class);

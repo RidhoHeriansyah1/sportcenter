@@ -1,9 +1,35 @@
 @extends('backend.layouts.master')
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0">Create</h4>
 
-            <div class="col-lg-12">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
+                    <li class="breadcrumb-item active">Create</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $item)
+        <li>{{ $item }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+@if (Session::get('success'))
+<div class="alert alert-success">
+    {{ Session::get('success') }}
+</div>
+@endif
+
 
                 <!-- Circle Buttons -->
                 <div class="card shadow mb-4">
@@ -35,15 +61,11 @@
                                         </select>
 
                                     </div>
-                                    <div class="mb-3 float-right">
-                                        <a href="/category" class="btn btn-secondary">
-                                            << Kembali</a>
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Create</button>
+                                    <div class="mb-3 text-end">
+                                        <a href="/category" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
+                                        <button type="submit" class="btn btn-success"><i class="lar la-save"></i> Create</button>
                                     </div>
                                 </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 @endsection
