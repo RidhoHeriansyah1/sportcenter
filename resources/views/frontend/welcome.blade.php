@@ -25,12 +25,18 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                        <a href="{{ url('/') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">HOME</a>
+                        <a href="{{ route('logout') }}" class="text-sm text-gray-700 dark:text-gray-500 underline" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">LOGOUT</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('frontend.login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">LOGIN</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            <a href="{{ route('frontend.register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">SIGN UP</a>
+                            <a href="{{ route('frontend.partner-register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">BECOME A VENUE PARTNER</a>
                         @endif
                     @endauth
                 </div>

@@ -2,7 +2,7 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="index.html" class="logo logo-dark">
+        <a href="{{ route('backend.dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
             </span>
@@ -11,7 +11,7 @@
             </span>
         </a>
         <!-- Light Logo-->
-        <a href="index.html" class="logo logo-light">
+        <a href="{{ route('backend.dashboard') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
             </span>
@@ -26,15 +26,10 @@
 
     <div id="scrollbar">
         <div class="container-fluid">
-
-            <div id="two-column-menu">
-            </div>
+            <div id="two-column-menu"></div>
             <ul class="navbar-nav" id="navbar-nav">
-
-                <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li>
-
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/">
+                    <a class="nav-link menu-link" href="{{ route('backend.dashboard') }}">
                         <i class=" ri-home-3-line"></i> <span data-key="t-category">Dashboard</span>
                     </a>
                 </li>
@@ -68,11 +63,7 @@
                         <i class="ri-user-2-fill"></i> <span data-key="t-owner">Owner</span>
                     </a>
                 </li>
-
             </ul>
         </div>
-        <!-- Sidebar -->
     </div>
-
-    <div class="sidebar-background"></div>
 </div>
