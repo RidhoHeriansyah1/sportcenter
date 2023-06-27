@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data = category::all();
-        return view('admin.category.category', compact('data'));
+        return view('backend.category.list', compact('data'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        return view('backend.category.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class CategoryController extends Controller
             'status' => $request->input('status'),
         ];
         category::create($data);
-        return redirect('category')->with(
+        return redirect()->route('backend.category.list')->with(
             'success',
             'Data Berhasil Di Tambahkan'
         );
@@ -84,7 +84,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $data = category::where('id', $id)->first();
-        return view('admin.category.edit', compact('data'));
+        return view('backend.category.edit', compact('data'));
     }
 
     /**
@@ -126,7 +126,7 @@ class CategoryController extends Controller
         }
 
         category::where('id', $id)->update($data);
-        return redirect('/category')->with(
+        return redirect()->route('backend.category.list')->with(
             'success',
             'Data Berhasil Di Update'
         );
@@ -143,7 +143,7 @@ class CategoryController extends Controller
         $data = category::where('id', $id)->first();
         File::delete(public_path('admin/category/image') . '/' . $data->image);
         category::where('id', $id)->delete();
-        return redirect('category')->with(
+        return redirect()->route('backend.category.list')->with(
             'success',
             'Data Berhasil Di Hapus'
         );

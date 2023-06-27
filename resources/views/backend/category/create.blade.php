@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('layouts.backend')
 @section('content')
 <div class="row">
     <div class="col-12">
@@ -24,11 +24,6 @@
     </ul>
 </div>
 @endif
-@if (Session::get('success'))
-<div class="alert alert-success">
-    {{ Session::get('success') }}
-</div>
-@endif
 
 
                 <!-- Circle Buttons -->
@@ -38,7 +33,7 @@
                     </div>
                     <div class="card-body">
 
-                                <form action="/category" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('backend.category.store') }}" method="POST" enctype="multipart/form-data">
                                     <br>
                                     @csrf
                                     <div class="mb-3">

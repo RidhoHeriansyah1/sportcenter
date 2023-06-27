@@ -35,7 +35,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/category">
+                    <a class="nav-link menu-link" href="{{ route('backend.category.list') }}">
                         <i class="las la-tags"></i><span data-key="t-category">Category</span>
                     </a>
                 </li>
