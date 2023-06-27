@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = category::all();
+        $data = category::orderBy('id', 'desc')->paginate(2);
         return view('backend.category.list', compact('data'));
     }
 
@@ -46,6 +46,12 @@ class CategoryController extends Controller
             'name' => 'required',
             'image' => 'required|mimes:png,jpg,jpeg,gif',
             'status' => 'required|numeric',
+        ], [
+            'name.required' => 'Nama Wajib Diisi',
+            'image.required' => 'Image Wajib Dimasukkan',
+            'image.mimes' => 'Image hanya diperbolehkan berekstensi JPEG, JPG, PNG, GIF',
+            'status.required' => 'Status Wajib Diisi',
+            'status.numeric' => 'Status Wajib dalam Angka',
         ]);
         $image_file = $request->file('image');
         $image_extension = $image_file->extension();
@@ -56,7 +62,7 @@ class CategoryController extends Controller
             'name' => $request->input('name'),
             'image' => $image_name,
             'status' => $request->input('status'),
-        ];
+        ] ;
         category::create($data);
         return redirect()->route('backend.category.list')->with(
             'success',
@@ -98,7 +104,13 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'image' => 'mimes:png,jpg,jpeg,gif',
             'status' => 'required|numeric',
+        ], [
+            'name.required' => 'Nama Wajib Diisi',
+            'image.mimes' => 'Image hanya diperbolehkan berekstensi JPEG, JPG, PNG, GIF',
+            'status.required' => 'Status Wajib Diisi',
+            'status.numeric' => 'Status Wajib dalam Angka',
         ]);
         $data = [
             'name' => $request->input('name'),

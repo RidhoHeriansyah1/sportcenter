@@ -43,9 +43,9 @@ Route::prefix('backend')->group(function(){
 	//Dashboard
 	Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('backend.dashboard')->middleware(['auth','is_admin']);
 	Route::get('/category', [App\Http\Controllers\Backend\CategoryController::class, 'index'])->name('backend.category.list')->middleware(['auth','is_admin']);
-    Route::get('/category/create', [App\Http\Controllers\Backend\CategoryController::class, 'create'])->name('backend.category.create')->middleware(['auth','is_admin']);
+    // Route::get('/category/create', [App\Http\Controllers\Backend\CategoryController::class, 'create'])->name('backend.category.create')->middleware(['auth','is_admin']);
     Route::post('/category/store', [App\Http\Controllers\Backend\CategoryController::class, 'store'])->name('backend.category.store')->middleware(['auth','is_admin']);
-    Route::get('/category/{id}/edit', [App\Http\Controllers\Backend\CategoryController::class, 'edit'])->name('backend.category.edit')->middleware(['auth','is_admin']);
+    // Route::get('/category/{id}/edit', [App\Http\Controllers\Backend\CategoryController::class, 'edit'])->name('backend.category.edit')->middleware(['auth','is_admin']);
     Route::put('/category/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'update'])->name('backend.category.update')->middleware(['auth','is_admin']);
     Route::delete('/category/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'destroy'])->name('backend.category.destroy')->middleware(['auth','is_admin']);
 });
