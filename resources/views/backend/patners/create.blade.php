@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('layouts.backend')
 @section('content')
 <div class="row">
     <div class="col-12">
@@ -30,49 +30,51 @@
 </div>
 @endif
 
-
-                <!-- Circle Buttons -->
+           <!-- Circle Buttons -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Tambah Data</h6>
                     </div>
                     <div class="card-body">
 
-                                <form action="/category" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('backend.patners.store') }}" method="POST" enctype="multipart/form-data">
                                     <br>
                                     @csrf
                                     <div class="mb-3">
                                         <label for="fullname" class="form-label">Fullname</label>
                                         <input type="text" name="fullname" class="form-control" id="fullname"
-                                            placeholder="Enter your Full Name" value="{{ Session::get('fullname') }}">
+                                            placeholder="Enter your Full Name">
                                     </div>
 
                                    <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
                                         <input type="text" name="username" class="form-control" id="username"
-                                            placeholder="Enter your Username" value="{{ Session::get('username') }}">
+                                            placeholder="Enter your Username">
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="email" class="form-label">Email</label>
                                         <input type="email" name="email" class="form-control form-control-user"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Enter Email..." value="{{ Session::get('email') }}" >
+                                            placeholder="Enter Email">
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="password" class="form-label">Password</label>
                                         <input type="password" name="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                            id="exampleInputPassword" placeholder="enter Password">
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="phone" class="form-label">Phone</label>
                                         <input type="phone" name="phone" class="form-control form-control-user"
-                                            id="exampleInputPhone" placeholder="Phone">
+                                            id="exampleInputPhone" placeholder="enter Phone">
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="address" name="address" class="form-control form-control-user"
-                                            id="exampleInputEmail" aria-describedby="addrresHelp"
-                                            placeholder="Enter Address..." value="{{ Session::get('address') }}" >
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" name="address" class="form-control form-control-user"
+                                            id="exampleInputAddress" placeholder="enter Address" >
                                     </div>
 
                                     <div class="mb-3">
@@ -80,12 +82,18 @@
                                         <select name="status" class="form-control">
                                             <option value="0">Non Aktif</option>
                                             <option value="1">Aktif</option>
+                                        </div>
 
+                                            <div class="form-group">
+                                                <label for="remember_token" class="form-label">Remember Token</label>
+                                        <input type="text" name="remember_token" class="form-control form-control-user"
+                                            id="remember_token" placeholder="Enter Remember_token">
+                                    </div>
                                         </select>
 
                                     </div>
                                     <div class="mb-3 text-end">
-                                        <a href="/owners" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
+                                        <a href="{{ route('backend.patners.list') }}" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
                                         <button type="submit" class="btn btn-success"><i class="lar la-save"></i> Create</button>
                                     </div>
                                 </form>

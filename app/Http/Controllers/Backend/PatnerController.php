@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Patner;
 use Illuminate\Http\Request;
 
 class PatnerController extends Controller
@@ -14,7 +15,8 @@ class PatnerController extends Controller
      */
     public function index()
     {
-        return Route::view('owner', 'viewName');
+        $data = Patner::orderBy('id', 'desc')->paginate(2);
+        return view('backend.patners.list', compact('data'));
     }
 
     /**
@@ -24,7 +26,7 @@ class PatnerController extends Controller
      */
     public function create()
     {
-         return view('admin.category.create');
+         return view('backend.patners.create');
     }
 
     /**
@@ -39,24 +41,26 @@ class PatnerController extends Controller
         $request->validate([
             'fullname' => 'required',
             'username' => 'required',
+            'email' => 'required',
             'password' => 'required',
             'phone' => 'required',
             'address' => 'required',
             'status' => 'required|numeric',
-            'remember_token' =>'requid'
+            'remember_token' =>'required'
         ]);
 
         $data = [
             'fullname' => $request->input('fullname'),
             'username' => $request->input('username'),
+            'email' => $request->input('email'),
             'password' => $request->input('password'),
             'phone' => $request->input('phone'),
             'address' => $request->input('address'),
             'status' => $request->input('status'),
             'remember_token' => $request->input('remember_token'),
         ];
-        owners::create($data);
-        return redirect('owners')->with(
+        Patner::create($data);
+        return redirect()->route('backend.patners.list')->with(
             'success',
             'Data Berhasil Di Tambahkan'
         );
@@ -72,7 +76,6 @@ class PatnerController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -81,7 +84,8 @@ class PatnerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Patner::where('id', $id)->first();
+        return view('backend.patners.edit', compact('data'));
     }
 
     /**
@@ -93,7 +97,39 @@ class PatnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $request->validate([
+            'fullname' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'status' => 'required|numeric',
+            'remember_token' => 'required',
+        ], [
+            'fullname.required' => 'fullname Wajib Diisi',
+            'username.required' => 'userame Wajib Diisi',
+            'password.required' => 'password Wajib Diisi',
+            'phone.required' => 'phone Wajib Diisi',
+            'address.required' => 'address Wajib Diisi',
+            'status.required' => 'Status Wajib Diisi',
+            'status.numeric' => 'Status Wajib dalam Angka',
+            'remember_token.required' => 'remember token Wajib Diisi',
+        ]);
+        $data = [
+            'fullname' => $request->input('fullname'),
+            'username' => $request->input('username'),
+            'password' => $request->input('password'),
+            'phone' => $request->input('phone'),
+            'address' => $request->input('address'),
+            'status' => $request->input('status'),
+            'remember_token' => $request->input('remember_token'),
+        ];
+        Patner::where('id', $id)->update($data);
+        return redirect()->route('backend.patners.list')->with(
+            'success',
+            'Data Berhasil Di Update'
+        );
+
     }
 
     /**
@@ -104,6 +140,10 @@ class PatnerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Patner::where('id', $id)->delete();
+        return redirect()->route('backend.patners.list')->with(
+            'success',
+            'Data Berhasil Di Hapus'
+        );
     }
 }
