@@ -40,19 +40,31 @@ class PartnerController extends Controller
 
         $request->validate([
             'fullname' => 'required',
-            'username' => 'required',
-            'email' => 'required',
+            'username' => 'required'|'unique:partners,username',
+            'email' => 'required'|'unique:partners,email',
             'password' => 'required',
             'phone' => 'required',
             'address' => 'required',
             'status' => 'required|numeric',
             'remember_token' =>'required'
+        ], [
+            'fullname.required' => 'fullname Wajib Diisi',
+            'username.required' => 'username Wajib Diisi',
+            'username.unique' => 'username waajib isi',
+            'email.required' => 'email Wajib Diisi',
+            'email.unique' => 'username waajib isi',
+            'password.required' => 'password Wajib Diisi',
+            'phone.required' => 'phone Wajib Diisi',
+            'address.required' => 'address Wajib Diisi',
+            'status.required' => 'Status Wajib Diisi',
+            'status.numeric' => 'Status Wajib dalam Angka',
+            'remember_token.required' => 'remember token Wajib Diisi',
         ]);
 
         $data = [
             'fullname' => $request->input('fullname'),
-            'username' => $request->input('username'),
-            'email' => $request->input('email'),
+            'username.' => $request->input('username'),
+            'email.' => $request->input('email'),
             'password' => $request->input('password'),
             'phone' => $request->input('phone'),
             'address' => $request->input('address'),
@@ -60,10 +72,7 @@ class PartnerController extends Controller
             'remember_token' => $request->input('remember_token'),
         ];
         Partner::create($data);
-        return redirect()->route('backend.partners.list')->with(
-            'success',
-            'Data Berhasil Di Tambahkan'
-        );
+        return redirect()->route('backend.partners.list')->with('success','Data Berhasil Di Tambahkan');
     }
 
     /**

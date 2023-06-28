@@ -93,7 +93,7 @@
 
                                     </div>
                                     <div class="mb-3 text-end">
-                                        <a href="{{ route('backend.patners.list') }}" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
+                                        <a href="{{ route('backend.partners.list') }}" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
                                         <button type="submit" class="btn btn-success"><i class="lar la-save"></i> Create</button>
                                     </div>
                                 </form>

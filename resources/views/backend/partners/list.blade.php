@@ -33,6 +33,7 @@
                         <th scope="col">No</th>
                         <th scope="col">FullName</th>
                         <th scope="col">Username</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Password</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Address</th>
@@ -49,6 +50,7 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->fullname }}</td>
                             <td>{{ $item->username }}</td>
+                            <td>{{ $item->email }}</td>
                             <td>{{ $item->password }}</td>
                             <td>{{ $item->phone }}</td>
                             <td>{{ $item->address }}</td>

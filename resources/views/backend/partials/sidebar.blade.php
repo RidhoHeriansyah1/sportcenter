@@ -59,7 +59,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('backend.patners.list')}}">
+                    <a class="nav-link menu-link" href="{{ route('backend.partners.list')}}">
                         <i class="ri-user-2-fill"></i> <span data-key="t-owner">Owner</span>
                     </a>
                 </li>

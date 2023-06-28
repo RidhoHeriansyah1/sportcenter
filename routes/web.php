@@ -52,7 +52,7 @@ Route::prefix('backend')->group(function(){
     Route::delete('/category/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'destroy'])->name('backend.category.destroy')->middleware(['auth','is_admin']);
 
     //Patner
-    Route::get('/partner', [App\Http\Controllers\Backend\PartnerController::class, 'index'])->name('backend.patners.list')->middleware(['auth','is_admin']);
+    Route::get('/partner', [App\Http\Controllers\Backend\PartnerController::class, 'index'])->name('backend.partners.list')->middleware(['auth','is_admin']);
      Route::get('/partner/create', [App\Http\Controllers\Backend\PartnerController::class, 'create'])->name('backend.partners.create')->middleware(['auth','is_admin']);
      Route::post('/partner/store', [App\Http\Controllers\Backend\PartnerController::class, 'store'])->name('backend.partners.store')->middleware(['auth','is_admin']);
      Route::get('/partner/{id}/edit', [App\Http\Controllers\Backend\PartnerController::class, 'edit'])->name('backend.partners.edit')->middleware(['auth','is_admin']);
