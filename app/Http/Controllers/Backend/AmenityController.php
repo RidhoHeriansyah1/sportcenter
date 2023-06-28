@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Amenity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AmenityController extends Controller
 {
@@ -14,7 +16,8 @@ class AmenityController extends Controller
      */
     public function index()
     {
-        //
+        $data = Amenity::orderBy('id', 'desc')->paginate(2);
+        return view('backend.amenity.list', compact('data'));
     }
 
     /**
@@ -35,7 +38,26 @@ class AmenityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Session::flash('name', $request->name);
+        Session::flash('status', $request->status);
+
+        $request->validate([
+            'name' => 'required',
+            'status' => 'required|numeric',
+        ], [
+            'name.required' => 'Nama Wajib Diisi',
+            'status.required' => 'Status Wajib Diisi',
+            'status.numeric' => 'Status Wajib dalam Angka',
+        ]);
+        $data = [
+            'name' => $request->input('name'),
+            'status' => $request->input('status'),
+        ] ;
+        Amenity::create($data);
+        return redirect()->route('backend.amenity.list')->with(
+            'success',
+            'Data Berhasil Di Tambahkan'
+        );
     }
 
     /**
@@ -69,7 +91,23 @@ class AmenityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'status' => 'required|numeric',
+        ], [
+            'name.required' => 'Nama Wajib Diisi',
+            'status.required' => 'Status Wajib Diisi',
+            'status.numeric' => 'Status Wajib dalam Angka',
+        ]);
+        $data = [
+            'name' => $request->input('name'),
+            'status' => $request->input('status'),
+        ];
+        Amenity::where('id', $id)->update($data);
+        return redirect()->route('backend.amenity.list')->with(
+            'success',
+            'Data Berhasil Di Update'
+        );
     }
 
     /**
@@ -80,6 +118,10 @@ class AmenityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Amenity::where('id', $id)->delete();
+        return redirect()->route('backend.amenity.list')->with(
+            'success',
+            'Data Berhasil Di Hapus'
+        );
     }
 }
