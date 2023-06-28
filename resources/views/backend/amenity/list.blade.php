@@ -95,19 +95,14 @@
                     action="{{ route('backend.amenity.store') }}">
                     @csrf
                     <div class="modal-body">
-                        <div class="mb-3" id="modal-id" style="display: none;">
-                            <label for="id-field" class="form-label">ID</label>
-                            <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
-                        </div>
                         <div class="mb-3">
                             <label for="name-field" class="form-label">Name</label>
-                            <input type="text" name="name" id="name-field" class="form-control" />
-                            <div class="invalid-feedback">Please enter a customer name.</div>
+                            <input type="text" name="name" id="name-field" class="form-control" required/>
                         </div>
                         <div>
                             <label for="status-field" class="form-label">Status</label>
                             <select class="form-control" name="status" data-trigger name="status-field"
-                                id="status-field">
+                                id="status-field" required>
                                 <option value="">Status</option>
                                 <option value="0">Non Aktif</option>
                                 <option value="1">Aktif</option>
@@ -143,14 +138,10 @@
                         @csrf
                         {{method_field('put')}}
                         <div class="modal-body">
-                            <div class="mb-3" id="modal-id" style="display: none;">
-                                <label for="id-field" class="form-label">ID</label>
-                                <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
-                            </div>
                             <div class="mb-3">
                                 <label for="name-field" class="form-label">Name</label>
                                 <input type="text" name="name" id="name-field" class="form-control"
-                                    value="{{ $item->name }}" />
+                                    value="{{ $item->name }}" required />
                                 <div class="invalid-feedback">Please enter a customer name.</div>
                             </div>
                             @if ($item->image)
@@ -158,13 +149,13 @@
                                     <label for="image" class="form-label">Image</label><br>
                                     <img style="max-width:50px;max-height:50px;" class="mb-2"
                                     src="{{ url('admin/category/image') . '/' . $item->image }}" alt="">
-                                    <input type="file" class="form-control" id="image" name="image">
+                                    <input type="file" class="form-control" id="image" name="image" required>
                                 </div>
                             @endif
                             <div>
                                 <label for="status-field" class="form-label">Status</label>
                                 <select class="form-control" name="status" data-trigger name="status-field"
-                                    id="status-field">
+                                    id="status-field" required>
                                     <option value="">Status</option>
                                     <option value="0" {{ $item->status == 0 ? 'selected' : '' }}>Non Aktif</option>
                                     <option value="1" {{ $item->status == 1 ? 'selected' : '' }}>Aktif</option>

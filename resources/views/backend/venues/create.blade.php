@@ -13,38 +13,38 @@
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Name</label>
                                         <input type="text" name="name" class="form-control" id="name"
-                                            placeholder="Enter your Name" value="{{ Session::get('name') }}">
+                                            required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="category" class="form-label">Category ID</label>
-                                        <input type="number" name="category_id" class="form-control">
+                                        <input type="number" name="category_id" class="form-control" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="location" class="form-label">Patner ID</label>
-                                        <input type="number" name="patner_id" class="form-control">
+                                        <input type="number" name="patner_id" class="form-control" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="location" class="form-label">Location ID</label>
-                                        <input type="number" name="location_id" class="form-control">
+                                        <input type="number" name="location_id" class="form-control" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone</label>
-                                        <input type="number" name="phone" class="form-control">
+                                        <input type="number" name="phone" class="form-control" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="description" class="form-label">Description</label>
-                                        <input type="text" name="description" class="form-control">
+                                        <input type="text" name="description" class="form-control" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="image" class="form-label">Image</label>
-                                        <input type="file" class="form-control" id="image" name="image">
+                                        <input type="file" class="form-control" id="image" name="image" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="status" class="form-label">Status</label>
-                                        <select name="status" class="form-control">
+                                        <select name="status" class="form-control" required>
                                             <option value="0">Non Aktif</option>
                                             <option value="1">Aktif</option>
 

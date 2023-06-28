@@ -34,7 +34,6 @@
                         <th scope="col">No</th>
                         <th scope="col">Name</th>
                         <th>Category ID</th>
-                        <th>sa</th>
                         <th>Patner ID</th>
                         <th>Location ID</th>
                         <th>Phone</th>
@@ -52,9 +51,8 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->category_id }}</td>
-                            <td>{{ $item->category->name }}</td>
-                            <td>{{ $item->patner_id }}</td>
+                            <td>{{ isset($item->category->name) ? $item->category->name : '-' }}</td>
+                            <td>{{ isset($item->partner->fullname) ? $item->partner->fullname : '-'  }}</td>
                             <td>{{ $item->location_id }}</td>
                             <td>{{ $item->phone }}</td>
                             <td>{{ $item->description }}</td>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\category;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = category::orderBy('id', 'desc')->paginate(2);
+        $data = Category::orderBy('id', 'desc')->paginate(2);
         return view('backend.category.list', compact('data'));
     }
 
@@ -43,11 +43,12 @@ class CategoryController extends Controller
         Session::flash('status', $request->status);
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories,name',
             'image' => 'required|mimes:png,jpg,jpeg,gif',
             'status' => 'required|numeric',
         ], [
             'name.required' => 'Nama Wajib Diisi',
+            'name.unique' => 'Nama sudah terpakai',
             'image.required' => 'Image Wajib Dimasukkan',
             'image.mimes' => 'Image hanya diperbolehkan berekstensi JPEG, JPG, PNG, GIF',
             'status.required' => 'Status Wajib Diisi',
@@ -63,7 +64,7 @@ class CategoryController extends Controller
             'image' => $image_name,
             'status' => $request->input('status'),
         ] ;
-        category::create($data);
+        Category::create($data);
         return redirect()->route('backend.category.list')->with(
             'success',
             'Data Berhasil Di Tambahkan'
@@ -89,7 +90,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $data = category::where('id', $id)->first();
+        $data = Category::where('id', $id)->first();
         return view('backend.category.edit', compact('data'));
     }
 
@@ -103,11 +104,12 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories,name',
             'image' => 'mimes:png,jpg,jpeg,gif',
             'status' => 'required|numeric',
         ], [
             'name.required' => 'Nama Wajib Diisi',
+            'name.unique' => 'Nama sudah terpakai',
             'image.mimes' => 'Image hanya diperbolehkan berekstensi JPEG, JPG, PNG, GIF',
             'status.required' => 'Status Wajib Diisi',
             'status.numeric' => 'Status Wajib dalam Angka',
@@ -128,7 +130,7 @@ class CategoryController extends Controller
                 $image_name
             ); //sudah terupload ke direktori
 
-            $data_image = category::where('id', $id)->first();
+            $data_image = Category::where('id', $id)->first();
             File::delete(
                 public_path('/admin/category/image') . '/' . $data_image->image
             );
@@ -137,7 +139,7 @@ class CategoryController extends Controller
             ];
         }
 
-        category::where('id', $id)->update($data);
+        Category::where('id', $id)->update($data);
         return redirect()->route('backend.category.list')->with(
             'success',
             'Data Berhasil Di Update'
@@ -152,9 +154,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $data = category::where('id', $id)->first();
+        $data = Category::where('id', $id)->first();
         File::delete(public_path('admin/category/image') . '/' . $data->image);
-        category::where('id', $id)->delete();
+        Category::where('id', $id)->delete();
         return redirect()->route('backend.category.list')->with(
             'success',
             'Data Berhasil Di Hapus'

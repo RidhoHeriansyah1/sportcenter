@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Patner;
+use App\Models\Partner;
 use Illuminate\Http\Request;
 
-class PatnerController extends Controller
+class PartnerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PatnerController extends Controller
      */
     public function index()
     {
-        $data = Patner::orderBy('id', 'desc')->paginate(2);
+        $data = Partner::orderBy('id', 'desc')->paginate(2);
         return view('backend.patners.list', compact('data'));
     }
 
@@ -59,7 +59,7 @@ class PatnerController extends Controller
             'status' => $request->input('status'),
             'remember_token' => $request->input('remember_token'),
         ];
-        Patner::create($data);
+        Partner::create($data);
         return redirect()->route('backend.patners.list')->with(
             'success',
             'Data Berhasil Di Tambahkan'
@@ -84,7 +84,7 @@ class PatnerController extends Controller
      */
     public function edit($id)
     {
-        $data = Patner::where('id', $id)->first();
+        $data = Partner::where('id', $id)->first();
         return view('backend.patners.edit', compact('data'));
     }
 
@@ -124,7 +124,7 @@ class PatnerController extends Controller
             'status' => $request->input('status'),
             'remember_token' => $request->input('remember_token'),
         ];
-        Patner::where('id', $id)->update($data);
+        Partner::where('id', $id)->update($data);
         return redirect()->route('backend.patners.list')->with(
             'success',
             'Data Berhasil Di Update'
@@ -140,7 +140,7 @@ class PatnerController extends Controller
      */
     public function destroy($id)
     {
-        Patner::where('id', $id)->delete();
+        Partner::where('id', $id)->delete();
         return redirect()->route('backend.patners.list')->with(
             'success',
             'Data Berhasil Di Hapus'

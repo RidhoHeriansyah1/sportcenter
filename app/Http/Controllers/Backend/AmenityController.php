@@ -42,10 +42,11 @@ class AmenityController extends Controller
         Session::flash('status', $request->status);
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:amenities,name',
             'status' => 'required|numeric',
         ], [
             'name.required' => 'Nama Wajib Diisi',
+            'name.unique' => 'Nama sudah terpakai',
             'status.required' => 'Status Wajib Diisi',
             'status.numeric' => 'Status Wajib dalam Angka',
         ]);
@@ -92,10 +93,11 @@ class AmenityController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:amenities,name',
             'status' => 'required|numeric',
         ], [
             'name.required' => 'Nama Wajib Diisi',
+            'name.unique' => 'Nama sudah terpakai',
             'status.required' => 'Status Wajib Diisi',
             'status.numeric' => 'Status Wajib dalam Angka',
         ]);

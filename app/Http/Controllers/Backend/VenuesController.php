@@ -18,7 +18,7 @@ class VenuesController extends Controller
      */
     public function index()
     {
-        $data = Venues::with('category', '', '')->orderBy('id', 'desc')->paginate(2);
+        $data = Venues::with('category', 'partner')->orderBy('id', 'desc')->paginate(2);
         return view('backend.venues.list', compact('data'));
     }
 
@@ -44,7 +44,7 @@ class VenuesController extends Controller
         Session::flash('status', $request->status);
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:venues,name',
             'category_id' => 'required',
             'patner_id' => 'required',
             'location_id' => 'required',
@@ -54,6 +54,7 @@ class VenuesController extends Controller
             'status' => 'required|numeric',
         ], [
             'name.required' => 'Nama Wajib Diisi',
+            'name.unique' => 'Nama sudah terpakai',
             'category_id.required' => 'Category wajib diisi',
             'patner_id.required' => 'Patner wajib diisi',
             'location_id.required' => 'Location wajib diisi',
@@ -119,7 +120,7 @@ class VenuesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:venues,name',
             'category_id' => 'required',
             'patner_id' => 'required',
             'location_id' => 'required',
@@ -129,6 +130,7 @@ class VenuesController extends Controller
             'status' => 'required|numeric',
         ], [
             'name.required' => 'Nama Wajib Diisi',
+            'name.unique' => 'Nama sudah terpakai',
             'category_id.required' => 'Category wajib diisi',
             'patner_id.required' => 'Patner wajib diisi',
             'location_id.required' => 'Location wajib diisi',

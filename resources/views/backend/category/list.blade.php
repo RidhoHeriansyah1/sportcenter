@@ -102,24 +102,30 @@
                     action="{{ route('backend.category.store') }}">
                     @csrf
                     <div class="modal-body">
-                        <div class="mb-3" id="modal-id" style="display: none;">
-                            <label for="id-field" class="form-label">ID</label>
-                            <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
-                        </div>
                         <div class="mb-3">
                             <label for="name-field" class="form-label">Name</label>
-                            <input type="text" name="name" id="name-field" class="form-control" />
-                            <div class="invalid-feedback">Please enter a customer name.</div>
+                            <input type="text" name="name" id="name-field" class="form-control" required />
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
                         </div>
                         <div class="mb-3">
                             <label for="email-field" class="form-label">Image</label>
-                            <input type="file" name="image" id="image-field" class="form-control" />
-                            <div class="invalid-feedback">Please enter an email.</div>
+                            <input type="file" name="image" id="image-field" class="form-control" required />
+                            @error('image')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
                         </div>
                         <div>
                             <label for="status-field" class="form-label">Status</label>
                             <select class="form-control" name="status" data-trigger name="status-field"
-                                id="status-field">
+                                id="status-field" required>
                                 <option value="">Status</option>
                                 <option value="0">Non Aktif</option>
                                 <option value="1">Aktif</option>

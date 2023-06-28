@@ -15,14 +15,14 @@ class Venues extends Model
 
     public function category()
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(Category::class);
     }
     public function location()
     {
         return $this->belongsTo(Location::class);
     }
-    public function patner()
+    public function partner()
     {
-        return $this->belongsTo(Patner::class);
+        return $this->belongsTo(Partner::class);
     }
 }
