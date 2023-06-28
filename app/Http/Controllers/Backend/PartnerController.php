@@ -16,7 +16,7 @@ class PartnerController extends Controller
     public function index()
     {
         $data = Partner::orderBy('id', 'desc')->paginate(2);
-        return view('backend.patners.list', compact('data'));
+        return view('backend.partners.list', compact('data'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PartnerController extends Controller
      */
     public function create()
     {
-         return view('backend.patners.create');
+         return view('backend.partners.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class PartnerController extends Controller
             'remember_token' => $request->input('remember_token'),
         ];
         Partner::create($data);
-        return redirect()->route('backend.patners.list')->with(
+        return redirect()->route('backend.partners.list')->with(
             'success',
             'Data Berhasil Di Tambahkan'
         );
@@ -85,7 +85,7 @@ class PartnerController extends Controller
     public function edit($id)
     {
         $data = Partner::where('id', $id)->first();
-        return view('backend.patners.edit', compact('data'));
+        return view('backend.partners.edit', compact('data'));
     }
 
     /**
@@ -125,7 +125,7 @@ class PartnerController extends Controller
             'remember_token' => $request->input('remember_token'),
         ];
         Partner::where('id', $id)->update($data);
-        return redirect()->route('backend.patners.list')->with(
+        return redirect()->route('backend.partners.list')->with(
             'success',
             'Data Berhasil Di Update'
         );
@@ -141,7 +141,7 @@ class PartnerController extends Controller
     public function destroy($id)
     {
         Partner::where('id', $id)->delete();
-        return redirect()->route('backend.patners.list')->with(
+        return redirect()->route('backend.partners.list')->with(
             'success',
             'Data Berhasil Di Hapus'
         );

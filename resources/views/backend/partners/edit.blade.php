@@ -32,7 +32,7 @@
             </div>
             <div class="card-body">
 
-                <form action="{{ route('backend.patners.update', $data->id)  }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('backend.partners.update', $data->id)  }}" method="POST" enctype="multipart/form-data">
                     <br>
                     @csrf
                     {{method_field('put')}}
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="mb-3 float-right">
-                        <a href="{{ route('backend.patners.list') }}" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
+                        <a href="{{ route('backend.partners.list') }}" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
                         <button type="submit" class="btn btn-primary"><i class="lar la-save"></i> Update</button>
                     </div>
                 </form>

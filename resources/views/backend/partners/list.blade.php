@@ -21,7 +21,7 @@
         {{-- Judul Card --}}
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">Patners List</h6>
-            <a href="{{ route('backend.patners.create') }}" class="btn btn-sm btn-success add-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
+            <a href="{{ route('backend.partners.create') }}" class="btn btn-sm btn-success add-btn"><i class="ri-add-line align-bottom me-1"></i> Create</a>
         </div>
         {{-- End Judul Card --}}
         <div class="card-body">
@@ -63,7 +63,7 @@
                                 <div class="d-flex gap-2">
 
                                                 <div class="edit">
-                                                    <a href="{{ route('backend.patners.edit', $item->id) }}" class="btn btn-sm btn-success edit-item-btn"><i
+                                                    <a href="{{ route('backend.partners.edit', $item->id) }}" class="btn btn-sm btn-success edit-item-btn"><i
                                                             class="ri-pencil-fill align-bottom me-2"></i>Edit</a>
                                                 </div>
                                                 <div class="remove">
@@ -106,7 +106,7 @@
                         </div>
                         <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                             {{-- <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button> --}}
-                            <form action="{{ route('backend.patners.destroy', $item->id) }}" method="POST">
+                            <form action="{{ route('backend.partners.destroy', $item->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>

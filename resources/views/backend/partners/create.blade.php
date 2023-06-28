@@ -37,7 +37,7 @@
                     </div>
                     <div class="card-body">
 
-                                <form action="{{ route('backend.patners.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('backend.partners.store') }}" method="POST" enctype="multipart/form-data">
                                     <br>
                                     @csrf
                                     <div class="mb-3">

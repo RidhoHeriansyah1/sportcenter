@@ -52,12 +52,12 @@ Route::prefix('backend')->group(function(){
     Route::delete('/category/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'destroy'])->name('backend.category.destroy')->middleware(['auth','is_admin']);
 
     //Patner
-    Route::get('/patner', [App\Http\Controllers\Backend\PatnerController::class, 'index'])->name('backend.patners.list')->middleware(['auth','is_admin']);
-     Route::get('/patner/create', [App\Http\Controllers\Backend\PatnerController::class, 'create'])->name('backend.patners.create')->middleware(['auth','is_admin']);
-     Route::post('/patner/store', [App\Http\Controllers\Backend\PatnerController::class, 'store'])->name('backend.patners.store')->middleware(['auth','is_admin']);
-     Route::get('/patner/{id}/edit', [App\Http\Controllers\Backend\PatnerController::class, 'edit'])->name('backend.patners.edit')->middleware(['auth','is_admin']);
-     Route::put('/patner/{id}', [App\Http\Controllers\Backend\PatnerController::class, 'update'])->name('backend.patners.update')->middleware(['auth','is_admin']);
-     Route::delete('/patner/{id}', [App\Http\Controllers\Backend\PatnerController::class, 'destroy'])->name('backend.patners.destroy')->middleware(['auth','is_admin']);
+    Route::get('/partner', [App\Http\Controllers\Backend\PartnerController::class, 'index'])->name('backend.patners.list')->middleware(['auth','is_admin']);
+     Route::get('/partner/create', [App\Http\Controllers\Backend\PartnerController::class, 'create'])->name('backend.partners.create')->middleware(['auth','is_admin']);
+     Route::post('/partner/store', [App\Http\Controllers\Backend\PartnerController::class, 'store'])->name('backend.partners.store')->middleware(['auth','is_admin']);
+     Route::get('/partner/{id}/edit', [App\Http\Controllers\Backend\PartnerController::class, 'edit'])->name('backend.partners.edit')->middleware(['auth','is_admin']);
+     Route::put('/partner/{id}', [App\Http\Controllers\Backend\PartnerController::class, 'update'])->name('backend.partners.update')->middleware(['auth','is_admin']);
+     Route::delete('/partner/{id}', [App\Http\Controllers\Backend\PartnerController::class, 'destroy'])->name('backend.partners.destroy')->middleware(['auth','is_admin']);
 
     //amenity
     Route::get('/amenity', [App\Http\Controllers\Backend\AmenityController::class, 'index'])->name('backend.amenity.list')->middleware(['auth','is_admin']);
