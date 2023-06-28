@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 */
+
 Auth::routes();
 
 Route::get('/', function () {
@@ -35,10 +36,10 @@ Route::post('/user/resetPasswordUpdate', [App\Http\Controllers\Frontend\Customer
 | Bagian Admin
 |--------------------------------------------------------------------------
 */
-Route::prefix('backend')->group(function(){
+Route::prefix('backend')->group(function () {
 
     //Not Found Page
-	Route::get('/notfound', [App\Http\Controllers\HomeController::class, 'notFoundPage'])->name('backend.notfound')->middleware('auth');
+    Route::get('/notfound', [App\Http\Controllers\HomeController::class, 'notFoundPage'])->name('backend.notfound')->middleware('auth');
 
 	//Dashboard
 	Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('backend.dashboard')->middleware(['auth','is_admin']);
@@ -46,7 +47,7 @@ Route::prefix('backend')->group(function(){
     // Category
 	Route::get('/category', [App\Http\Controllers\Backend\CategoryController::class, 'index'])->name('backend.category.list')->middleware(['auth','is_admin']);
     // Route::get('/category/create', [App\Http\Controllers\Backend\CategoryController::class, 'create'])->name('backend.category.create')->middleware(['auth','is_admin']);
-    Route::post('/category/store', [App\Http\Controllers\Backend\CategoryController::class, 'store'])->name('backend.category.store')->middleware(['auth','is_admin']);
+    Route::post('/category/store', [App\Http\Controllers\Backend\CategoryController::class, 'store'])->name('backend.category.store')->middleware(['auth', 'is_admin']);
     // Route::get('/category/{id}/edit', [App\Http\Controllers\Backend\CategoryController::class, 'edit'])->name('backend.category.edit')->middleware(['auth','is_admin']);
     Route::put('/category/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'update'])->name('backend.category.update')->middleware(['auth','is_admin']);
     Route::delete('/category/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'destroy'])->name('backend.category.destroy')->middleware(['auth','is_admin']);
@@ -74,6 +75,11 @@ Route::prefix('backend')->group(function(){
     Route::put('/venues/{id}', [App\Http\Controllers\Backend\VenuesController::class, 'update'])->name('backend.venues.update')->middleware(['auth','is_admin']);
     Route::delete('/venues/{id}', [App\Http\Controllers\Backend\VenuesController::class, 'destroy'])->name('backend.venues.destroy')->middleware(['auth','is_admin']);
 
+    //Location
+    Route::get('/location', [App\Http\Controllers\Backend\LocationController::class, 'index'])->name('backend.location.index')->middleware(['auth', 'is_admin']);
+    Route::post('/location/store', [App\Http\Controllers\Backend\LocationController::class, 'store'])->name('backend.location.store')->middleware(['auth', 'is_admin']);
+    Route::put('/location/{id}', [App\Http\Controllers\Backend\LocationController::class, 'update'])->name('backend.location.update')->middleware(['auth', 'is_admin']);
+    Route::delete('/location/{id}', [App\Http\Controllers\Backend\LocationController::class, 'destroy'])->name('backend.location.destroy')->middleware(['auth', 'is_admin']);
 });
 
 /*

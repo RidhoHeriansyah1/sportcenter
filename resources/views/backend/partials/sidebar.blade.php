@@ -41,7 +41,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/location">
+                    <a class="nav-link menu-link" href="{{ route('backend.location.index') }}">
                         <i class="ri-map-pin-2-line"></i> <span data-key="t-location">Location</span>
                     </a>
                 </li>
