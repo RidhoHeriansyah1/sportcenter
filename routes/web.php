@@ -53,6 +53,13 @@ Route::prefix('backend')->group(function(){
     Route::post('/amenity/store', [App\Http\Controllers\Backend\AmenityController::class, 'store'])->name('backend.amenity.store')->middleware(['auth','is_admin']);
     Route::put('/amenity/{id}', [App\Http\Controllers\Backend\AmenityController::class, 'update'])->name('backend.amenity.update')->middleware(['auth','is_admin']);
     Route::delete('/amenity/{id}', [App\Http\Controllers\Backend\AmenityController::class, 'destroy'])->name('backend.amenity.destroy')->middleware(['auth','is_admin']);
+
+    Route::get('/venues', [App\Http\Controllers\Backend\VenuesController::class, 'index'])->name('backend.venues.list')->middleware(['auth','is_admin']);
+    Route::get('/venues/create', [App\Http\Controllers\Backend\VenuesController::class, 'create'])->name('backend.venues.create')->middleware(['auth','is_admin']);
+    Route::post('/venues/store', [App\Http\Controllers\Backend\VenuesController::class, 'store'])->name('backend.venues.store')->middleware(['auth','is_admin']);
+    Route::get('/venues/{id}/edit', [App\Http\Controllers\Backend\VenuesController::class, 'edit'])->name('backend.venues.edit')->middleware(['auth','is_admin']);
+    Route::put('/venues/{id}', [App\Http\Controllers\Backend\VenuesController::class, 'update'])->name('backend.venues.update')->middleware(['auth','is_admin']);
+    Route::delete('/venues/{id}', [App\Http\Controllers\Backend\VenuesController::class, 'destroy'])->name('backend.venues.destroy')->middleware(['auth','is_admin']);
 });
 
 /*

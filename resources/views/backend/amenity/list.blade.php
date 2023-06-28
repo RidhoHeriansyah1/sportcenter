@@ -157,7 +157,7 @@
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label><br>
                                     <img style="max-width:50px;max-height:50px;" class="mb-2"
-                                        src="{{ route('backend.category.destroy', $item->image) }}" alt="">
+                                    src="{{ url('admin/category/image') . '/' . $item->image }}" alt="">
                                     <input type="file" class="form-control" id="image" name="image">
                                 </div>
                             @endif
