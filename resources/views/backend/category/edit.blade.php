@@ -32,7 +32,7 @@
             </div>
             <div class="card-body">
 
-                <form action="{{ url('/backend/category/' . $data->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('/backend/patners/list' . $data->id) }}" method="POST" enctype="multipart/form-data">
                     <br>
                     @csrf
                     {{method_field('put')}}
@@ -42,22 +42,12 @@
                             placeholder="Enter your Name" value="{{ $data->name }}">
                     </div>
 
-                    @if ($data->image)
-
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Image</label>
-                        <img style="max-width:50px;max-height:50px;" src="{{ url('admin/category/image').'/'.$data->image  }}" alt="">
-                       <input type="file" class="form-control" id="image" name="image">
-                    </div>
-
-                    @endif
-
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Status</label>
                         <input type="number" class="form-control" value="{{ $data->status }}" name="status" placeholder="Status">
                     </div>
                     <div class="mb-3 float-right">
-                        <a href="/category" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
+                        <a href="/patners" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
                         <button type="submit" class="btn btn-primary"><i class="lar la-save"></i> Update</button>
                     </div>
                 </form>

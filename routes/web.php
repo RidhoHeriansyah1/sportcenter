@@ -42,6 +42,8 @@ Route::prefix('backend')->group(function(){
 
 	//Dashboard
 	Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('backend.dashboard')->middleware(['auth','is_admin']);
+
+    // Category
 	Route::get('/category', [App\Http\Controllers\Backend\CategoryController::class, 'index'])->name('backend.category.list')->middleware(['auth','is_admin']);
     // Route::get('/category/create', [App\Http\Controllers\Backend\CategoryController::class, 'create'])->name('backend.category.create')->middleware(['auth','is_admin']);
     Route::post('/category/store', [App\Http\Controllers\Backend\CategoryController::class, 'store'])->name('backend.category.store')->middleware(['auth','is_admin']);
@@ -49,17 +51,29 @@ Route::prefix('backend')->group(function(){
     Route::put('/category/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'update'])->name('backend.category.update')->middleware(['auth','is_admin']);
     Route::delete('/category/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'destroy'])->name('backend.category.destroy')->middleware(['auth','is_admin']);
 
+    //Patner
+    Route::get('/patner', [App\Http\Controllers\Backend\PatnerController::class, 'index'])->name('backend.patners.list')->middleware(['auth','is_admin']);
+     Route::get('/patner/create', [App\Http\Controllers\Backend\PatnerController::class, 'create'])->name('backend.patners.create')->middleware(['auth','is_admin']);
+     Route::post('/patner/store', [App\Http\Controllers\Backend\PatnerController::class, 'store'])->name('backend.patners.store')->middleware(['auth','is_admin']);
+     Route::get('/patner/{id}/edit', [App\Http\Controllers\Backend\PatnerController::class, 'edit'])->name('backend.patners.edit')->middleware(['auth','is_admin']);
+     Route::put('/patner/{id}', [App\Http\Controllers\Backend\PatnerController::class, 'update'])->name('backend.patners.update')->middleware(['auth','is_admin']);
+     Route::delete('/patner/{id}', [App\Http\Controllers\Backend\PatnerController::class, 'destroy'])->name('backend.patners.destroy')->middleware(['auth','is_admin']);
+
+    //amenity
     Route::get('/amenity', [App\Http\Controllers\Backend\AmenityController::class, 'index'])->name('backend.amenity.list')->middleware(['auth','is_admin']);
     Route::post('/amenity/store', [App\Http\Controllers\Backend\AmenityController::class, 'store'])->name('backend.amenity.store')->middleware(['auth','is_admin']);
     Route::put('/amenity/{id}', [App\Http\Controllers\Backend\AmenityController::class, 'update'])->name('backend.amenity.update')->middleware(['auth','is_admin']);
     Route::delete('/amenity/{id}', [App\Http\Controllers\Backend\AmenityController::class, 'destroy'])->name('backend.amenity.destroy')->middleware(['auth','is_admin']);
 
+
+    // Venues
     Route::get('/venues', [App\Http\Controllers\Backend\VenuesController::class, 'index'])->name('backend.venues.list')->middleware(['auth','is_admin']);
     Route::get('/venues/create', [App\Http\Controllers\Backend\VenuesController::class, 'create'])->name('backend.venues.create')->middleware(['auth','is_admin']);
     Route::post('/venues/store', [App\Http\Controllers\Backend\VenuesController::class, 'store'])->name('backend.venues.store')->middleware(['auth','is_admin']);
     Route::get('/venues/{id}/edit', [App\Http\Controllers\Backend\VenuesController::class, 'edit'])->name('backend.venues.edit')->middleware(['auth','is_admin']);
     Route::put('/venues/{id}', [App\Http\Controllers\Backend\VenuesController::class, 'update'])->name('backend.venues.update')->middleware(['auth','is_admin']);
     Route::delete('/venues/{id}', [App\Http\Controllers\Backend\VenuesController::class, 'destroy'])->name('backend.venues.destroy')->middleware(['auth','is_admin']);
+
 });
 
 /*
