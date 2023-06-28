@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Category</h4>
+                <h4 class="mb-sm-0">Amenity</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                        <li class="breadcrumb-item active">Category</li>
+                        <li class="breadcrumb-item active">Amenity</li>
                     </ol>
                 </div>
             </div>
@@ -20,7 +20,7 @@
     <div class="card shadow mb-4">
         {{-- Judul Card --}}
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Category List</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Amenity List</h6>
             <button type="button" class="btn btn-sm btn-success add-btn" data-bs-toggle="modal" id="create-btn"
                 data-bs-target="#createModal"><i class="ri-add-line align-bottom me-1"></i> Create</button>
         </div>
@@ -33,7 +33,6 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Image</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -46,12 +45,6 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>
-                                @if ($item->image)
-                                    <img style="max-width:50px;max-height:50px;"
-                                        src="{{ url('admin/category/image') . '/' . $item->image }}" alt="">
-                                @endif
-                            </td>
                             <td>
                                 @if ($item->status == 0)
                                 <span class="badge badge-soft-danger text-uppercase">Non Aktif</span>
@@ -98,8 +91,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         id="close-modal"></button>
                 </div>
-                <form class="tablelist-form" autocomplete="off" enctype="multipart/form-data" method="POST"
-                    action="{{ route('backend.category.store') }}">
+                <form class="tablelist-form" autocomplete="off" method="POST"
+                    action="{{ route('backend.amenity.store') }}">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3" id="modal-id" style="display: none;">
@@ -110,11 +103,6 @@
                             <label for="name-field" class="form-label">Name</label>
                             <input type="text" name="name" id="name-field" class="form-control" />
                             <div class="invalid-feedback">Please enter a customer name.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email-field" class="form-label">Image</label>
-                            <input type="file" name="image" id="image-field" class="form-control" />
-                            <div class="invalid-feedback">Please enter an email.</div>
                         </div>
                         <div>
                             <label for="status-field" class="form-label">Status</label>
@@ -150,8 +138,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                             id="close-modal"></button>
                     </div>
-                    <form class="tablelist-form" autocomplete="off" enctype="multipart/form-data" method="POST"
-                        action="{{ route('backend.category.update', $item->id)}}">
+                    <form class="tablelist-form" autocomplete="off" method="POST"
+                        action="{{ route('backend.amenity.update', $item->id)}}">
                         @csrf
                         {{method_field('put')}}
                         <div class="modal-body">
@@ -169,7 +157,7 @@
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label><br>
                                     <img style="max-width:50px;max-height:50px;" class="mb-2"
-                                        src="{{ url('admin/category/image') . '/' . $item->image }}" alt="">
+                                        src="{{ route('backend.category.destroy', $item->image) }}" alt="">
                                     <input type="file" class="form-control" id="image" name="image">
                                 </div>
                             @endif
@@ -217,7 +205,7 @@
                         </div>
                         <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                             {{-- <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button> --}}
-                            <form action="{{ route('backend.category.destroy', $item->id)}}" method="POST">
+                            <form action="{{ route('backend.amenity.destroy', $item->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>

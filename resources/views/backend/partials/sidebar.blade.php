@@ -47,7 +47,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/amenity">
+                    <a class="nav-link menu-link" href="{{ route('backend.amenity.list') }}">
                         <i class="lar la-sticky-note"></i> <span data-key="t-amenity">Amenity</span>
                     </a>
                 </li>

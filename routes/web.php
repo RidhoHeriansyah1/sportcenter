@@ -48,6 +48,11 @@ Route::prefix('backend')->group(function(){
     // Route::get('/category/{id}/edit', [App\Http\Controllers\Backend\CategoryController::class, 'edit'])->name('backend.category.edit')->middleware(['auth','is_admin']);
     Route::put('/category/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'update'])->name('backend.category.update')->middleware(['auth','is_admin']);
     Route::delete('/category/{id}', [App\Http\Controllers\Backend\CategoryController::class, 'destroy'])->name('backend.category.destroy')->middleware(['auth','is_admin']);
+
+    Route::get('/amenity', [App\Http\Controllers\Backend\AmenityController::class, 'index'])->name('backend.amenity.list')->middleware(['auth','is_admin']);
+    Route::post('/amenity/store', [App\Http\Controllers\Backend\AmenityController::class, 'store'])->name('backend.amenity.store')->middleware(['auth','is_admin']);
+    Route::put('/amenity/{id}', [App\Http\Controllers\Backend\AmenityController::class, 'update'])->name('backend.amenity.update')->middleware(['auth','is_admin']);
+    Route::delete('/amenity/{id}', [App\Http\Controllers\Backend\AmenityController::class, 'destroy'])->name('backend.amenity.destroy')->middleware(['auth','is_admin']);
 });
 
 /*
