@@ -33,7 +33,7 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Name</th>
-                        <th>Venue ID</th>
+                        <th>Venue</th>
                         <th scope="col">Image</th>
                         <th>Description</th>
                         <th scope="col">Action</th>
