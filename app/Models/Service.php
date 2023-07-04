@@ -14,7 +14,7 @@ class Service extends Model
     protected $table = "services";
     protected $fillable = ['name', 'venue_id', 'image', 'description'];
 
-    public function venues()
+    public function venue()
     {
         return $this->belongsTo(Venues::class);
     }

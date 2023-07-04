@@ -47,7 +47,7 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>{{ isset($item->venues->name) ? $item->venues->name : '-' }}</td>
+                            <td>{{ isset($item->venue->name) ? $item->venue->name : '-' }}</td>
                             <td>
                                 @if ($item->image)
                                     <img style="max-width:50px;max-height:50px;"
