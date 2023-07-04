@@ -56,7 +56,7 @@
                                 </div>
                                     <div class="mb-3 text-end">
                                         <a href="{{ route('backend.venues.list') }}" class="btn btn-secondary"><i class="las la-arrow-left"></i> Kembali</a>
-                                        <button type="submit" class="btn btn-success"><i class="lar la-save"></i> Create</button>
+                                        <button type="submit" class="btn btn-success"><i class="lar la-save"></i> Update</button>
                                     </div>
                                 </form>
                     </div>

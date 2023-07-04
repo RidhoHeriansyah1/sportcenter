@@ -80,6 +80,14 @@ Route::prefix('backend')->group(function () {
     Route::post('/location/store', [App\Http\Controllers\Backend\LocationController::class, 'store'])->name('backend.location.store')->middleware(['auth', 'is_admin']);
     Route::put('/location/{id}', [App\Http\Controllers\Backend\LocationController::class, 'update'])->name('backend.location.update')->middleware(['auth', 'is_admin']);
     Route::delete('/location/{id}', [App\Http\Controllers\Backend\LocationController::class, 'destroy'])->name('backend.location.destroy')->middleware(['auth', 'is_admin']);
+
+    // Service
+    Route::get('/service', [App\Http\Controllers\Backend\ServiceController::class, 'index'])->name('backend.service.list')->middleware(['auth','is_admin']);
+    Route::get('/service/create', [App\Http\Controllers\Backend\ServiceController::class, 'create'])->name('backend.service.create')->middleware(['auth','is_admin']);
+    Route::post('/service/store', [App\Http\Controllers\Backend\ServiceController::class, 'store'])->name('backend.service.store')->middleware(['auth','is_admin']);
+    Route::get('/service/{id}/edit', [App\Http\Controllers\Backend\ServiceController::class, 'edit'])->name('backend.service.edit')->middleware(['auth','is_admin']);
+    Route::put('/service/{id}', [App\Http\Controllers\Backend\ServiceController::class, 'update'])->name('backend.service.update')->middleware(['auth','is_admin']);
+    Route::delete('/servuce/{id}', [App\Http\Controllers\Backend\ServiceController::class, 'destroy'])->name('backend.service.destroy')->middleware(['auth','is_admin']);
 });
 
 /*

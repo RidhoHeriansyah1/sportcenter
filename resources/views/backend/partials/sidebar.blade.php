@@ -69,6 +69,12 @@
                         <i class="ri-user-2-fill"></i> <span data-key="t-owner">Venues</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('backend.service.list')}}">
+                        <i class="ri-user-2-fill"></i> <span data-key="t-owner">Services</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
