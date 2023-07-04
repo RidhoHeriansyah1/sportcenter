@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Location;
+use App\Models\Partner;
 use App\Models\Venues;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +32,10 @@ class VenuesController extends Controller
      */
     public function create()
     {
-        return view('backend.venues.create');
+        $categories = Category::all();
+        $partner = Partner::all();
+        $location = Location::all();
+        return view('backend.venues.create', compact('categories', 'partner', 'location'));
     }
 
     /**
@@ -106,8 +112,12 @@ class VenuesController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::all();
+        $partner = Partner::all();
+        $location = Location::all();
+
         $data = Venues::where('id', $id)->first();
-        return view('backend.venues.edit', compact('data'));
+        return view('backend.venues.edit', compact('data', 'categories', 'partner', 'location'));
     }
 
     /**
