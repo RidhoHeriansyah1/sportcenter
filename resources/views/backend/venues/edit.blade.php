@@ -19,15 +19,27 @@
 
                                     <div class="mb-3">
                                         <label for="category" class="form-label">Category ID</label>
-                                        <input type="number" name="category_id" value="{{ $data->category_id }}" class="form-control" required>
+                                        <select name="category_id" class="form-control">
+                                            @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" {{ $data->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="location" class="form-label">Patner ID</label>
-                                        <input type="number" name="patner_id" value="{{ $data->patner_id }}" class="form-control" required>
+                                        <select name="partner_id" class="form-control">
+                                            @foreach ($partner as $partner)
+                                            <option value="{{ $partner->id }}" {{ $data->partner_id == $partner->id ? 'selected' : '' }}>{{ $partner->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="location" class="form-label">Location ID</label>
-                                        <input type="number" name="location_id" value="{{ $data->location_id }}" class="form-control" required>
+                                        <select name="location_id" class="form-control">
+                                            @foreach ($location as $location)
+                                            <option value="{{ $location->id }}" {{ $data->location_id == $location->id ? 'selected' : '' }}>{{ $location->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone</label>

@@ -18,15 +18,30 @@
 
                                     <div class="mb-3">
                                         <label for="category" class="form-label">Category ID</label>
-                                        <input type="number" name="category_id" class="form-control" required>
+                                        <select name="category_id" class="form-control">
+                                            <option value="">Select Category</option>
+                                            @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="location" class="form-label">Patner ID</label>
-                                        <input type="number" name="patner_id" class="form-control" required>
+                                        <select name="partner_id" class="form-control">
+                                            <option value="">Select Partner</option>
+                                            @foreach ($partner as $partner)
+                                            <option value="{{ $partner->id }}">{{ $partner->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="location" class="form-label">Location ID</label>
-                                        <input type="number" name="location_id" class="form-control" required>
+                                        <select name="location_id" class="form-control">
+                                            <option value="">Select Location</option>
+                                            @foreach ($location as $location)
+                                            <option value="{{ $location->id }}">{{ $location->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone</label>
