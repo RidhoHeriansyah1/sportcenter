@@ -37,49 +37,49 @@
                     @csrf
                     {{method_field('put')}}
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-                        <input type="text" name="fullname" class="form-control" id="exampleFormControlInput1"
+                        <label for="fullname" class="form-label">Full Name</label>
+                        <input type="text" name="fullname" class="form-control" id="fullname"
                             placeholder="Enter your Full Name" value="{{ $data->fullname }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">UserName</label>
-                        <input type="text" name="username" class="form-control" id="exampleFormControlInput1"
+                        <label for="username" class="form-label">UserName</label>
+                        <input type="text" name="username" class="form-control" id="username"
                             placeholder="Enter your Username" value="{{ $data->username }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" id="email"
                             placeholder="Enter your email" value="{{ $data->email }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="exampleFormControlInput1"
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="password"
                             placeholder="Enter your Password"  value="{{ $data->password }}">
                     </div>
 
                      <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Phone</label>
-                        <input type="text" name="phone" class="form-control" id="exampleFormControlInput1"
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" name="phone" class="form-control" id="phone"
                             placeholder="Enter your Address"  value="{{ $data->phone }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Address</label>
-                        <input type="text" name="address" class="form-control" id="exampleFormControlInput1"
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" name="address" class="form-control" id="address"
                             placeholder="Enter your Address"  value="{{ $data->address }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Status</label>
+                        <label for="status" class="form-label">Status</label>
                         <input type="number" class="form-control" value="{{ $data->status }}" name="status" placeholder="Status">
                     </div>
 
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Remember_token</label>
-                        <input type="text" name="remember_token" class="form-control" id="exampleFormControlInput1"
+                        <label for="remember_token" class="form-label">Remember Token</label>
+                        <input type="text" name="remember_token" class="form-control" id="remember_token"
                             placeholder="Enter your remember_token"  value="{{ $data->remember_token }}">
                     </div>
 

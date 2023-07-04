@@ -47,6 +47,16 @@ class PartnerController extends Controller
             'address' => 'required',
             'status' => 'required|numeric',
             'remember_token' =>'required'
+        ], [
+            'fullname.required' => 'fullname Wajib Diisi',
+            'username.required' => 'username Wajib Diisi',
+            'email.required' => 'email Wajib Diisi',
+            'password.required' => 'password Wajib Diisi',
+            'phone.required' => 'phone Wajib Diisi',
+            'address.required' => 'address Wajib Diisi',
+            'status.required' => 'status Wajib Diisi',
+            'status.numeric' => 'status Wajib Dalam Angka',
+            'remember_token.required' => 'remember token Wajib Diisi',
         ]);
 
         $data = [
@@ -60,10 +70,7 @@ class PartnerController extends Controller
             'remember_token' => $request->input('remember_token'),
         ];
         Partner::create($data);
-        return redirect()->route('backend.partners.list')->with(
-            'success',
-            'Data Berhasil Di Tambahkan'
-        );
+        return redirect()->route('backend.partners.list')->with('success','Data Berhasil Di Tambahkan');
     }
 
     /**
@@ -100,6 +107,7 @@ class PartnerController extends Controller
          $request->validate([
             'fullname' => 'required',
             'username' => 'required',
+            'email'=>'required',
             'password' => 'required',
             'phone' => 'required',
             'address' => 'required',
@@ -107,17 +115,19 @@ class PartnerController extends Controller
             'remember_token' => 'required',
         ], [
             'fullname.required' => 'fullname Wajib Diisi',
-            'username.required' => 'userame Wajib Diisi',
+            'username.required' => 'username Wajib Diisi',
+            'email.required'=> 'email Wajib Isi',
             'password.required' => 'password Wajib Diisi',
             'phone.required' => 'phone Wajib Diisi',
             'address.required' => 'address Wajib Diisi',
-            'status.required' => 'Status Wajib Diisi',
-            'status.numeric' => 'Status Wajib dalam Angka',
+            'status.required' => 'status Wajib Diisi',
+            'status.numeric' => 'status Wajib Dalam Angka',
             'remember_token.required' => 'remember token Wajib Diisi',
         ]);
         $data = [
             'fullname' => $request->input('fullname'),
             'username' => $request->input('username'),
+            'email' => $request->input('email'),
             'password' => $request->input('password'),
             'phone' => $request->input('phone'),
             'address' => $request->input('address'),
