@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use App\Models\Venues;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
@@ -28,7 +29,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('backend.service.create');
+        $venue = Venues::all();
+        return view('backend.service.create', compact('venue'));
     }
 
     /**
@@ -92,8 +94,9 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
+        $venue = Venues::all();
         $data = Service::where('id', $id)->first();
-        return view('backend.service.edit', compact('data'));
+        return view('backend.service.edit', compact('data', 'venue'));
     }
 
     /**
