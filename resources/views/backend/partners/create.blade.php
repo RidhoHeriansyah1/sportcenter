@@ -48,33 +48,33 @@
 
                                    <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
-                                        <input type="text" name="username" class="form-control" id="username"
+                                        <input type="text" name="username" class="form-control"
                                             placeholder="Enter your Username">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" name="email" class="form-control form-control-user"
-                                            id="exampleInputEmail" aria-describedby="emailHelp"
+                                            id="email" aria-describedby="emailHelp"
                                             placeholder="Enter Email">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="password" class="form-label">Password</label>
                                         <input type="password" name="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="enter Password">
+                                            id="password" placeholder="enter Password">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="phone" class="form-label">Phone</label>
                                         <input type="phone" name="phone" class="form-control form-control-user"
-                                            id="exampleInputPhone" placeholder="enter Phone">
+                                            id="phone" placeholder="enter Phone">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="address" class="form-label">Address</label>
                                         <input type="text" name="address" class="form-control form-control-user"
-                                            id="exampleInputAddress" placeholder="enter Address" >
+                                            id="address" placeholder="enter Address" >
                                     </div>
 
                                     <div class="mb-3">
