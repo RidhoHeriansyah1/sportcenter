@@ -43,7 +43,7 @@ class ServiceController extends Controller
         Session::flash('status', $request->status);
 
         $request->validate([
-            'name' => 'required|unique:venues,name',
+            'name' => 'required|unique:services,name',
             'venue_id' => 'required',
             'image' => 'required|mimes:png,jpg,jpeg,gif',
             'description' => 'required',
