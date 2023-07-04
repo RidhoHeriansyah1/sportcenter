@@ -17,7 +17,12 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="venues" class="form-label">Venue ID</label>
-                                        <input type="number" name="venue_id" class="form-control" required>
+                                        <select name="venue_id" class="form-control">
+                                            <option value="">Select Partner</option>
+                                            @foreach ($venue as $venue)
+                                            <option value="{{ $venue->id }}">{{ $venue->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
                                     <div class="mb-3">

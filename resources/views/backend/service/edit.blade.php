@@ -18,7 +18,11 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="venue" class="form-label">Venue ID</label>
-                                        <input type="number" name="venue_id" value="{{ $data->venue_id }}" class="form-control" required>
+                                        <select name="venue_id" class="form-control" required>
+                                            @foreach ($venue as $venue)
+                                            <option value="{{ $venue->id }}" {{ $data->venue_id == $venue->id ? 'selected' : '' }}>{{ $venue->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     @if ($data->image)
                                     <div class="mb-3">
