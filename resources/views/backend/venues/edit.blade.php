@@ -42,10 +42,10 @@
                                         <label for="image" class="form-label">Image</label><br>
                                         <img style="max-width:50px;max-height:50px;" class="mb-2"
                                             src="{{ url('admin/category/image') . '/' . $data->image }}" alt="">
-                                        <input type="file" class="form-control" id="image" name="image" required>
+                                        <input type="file" class="form-control" id="image" name="image">
                                     </div>
                                 @endif
-                                <div>
+                                <div class="mb-3">
                                     <label for="status-field" class="form-label">Status</label>
                                     <select class="form-control" name="status" data-trigger name="status-field"
                                         id="status-field" required>
