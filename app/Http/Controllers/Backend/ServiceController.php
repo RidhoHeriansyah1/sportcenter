@@ -18,7 +18,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $data = Service::with('venues')->orderBy('id', 'desc')->paginate(2);
+        $data = Service::with('venue')->orderBy('id', 'desc')->paginate(2);
         return view('backend.service.list', compact('data'));
     }
 
