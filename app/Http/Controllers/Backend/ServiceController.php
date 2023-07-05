@@ -83,6 +83,7 @@ class ServiceController extends Controller
         //     'description' => $request->input('description'),
         // ];
 
+
         $services = new Service();
         $services->name = $request->name;
         $services->venue_id = $request->venue_id;
@@ -99,6 +100,20 @@ class ServiceController extends Controller
         $room->time_start = $request->time_start;
         $room->time_end = $request->time_end;
         $room->save();
+
+        // $data = $request->all();
+        //     foreach ($data ['room_number'] as $item => $value){
+        //         $data2 = array(
+        //             'room_number' => $data['room_number'][$item],
+        //             'price' => $data['price'][$item],
+        //             'service_id' => $services->id,
+        //             'venue_id' => $data['venue_id'],
+        //             'partner_id' => $data['partner_id'][$item],
+        //             'time_start' => $data['time_start'][$item],
+        //             'time_end' => $data['time_end'][$item],
+        //         );
+        //         Room::create($data2);
+        //     }
         return redirect()
             ->route('backend.service.list')
             ->with('success', 'Data Berhasil Di Tambahkan');

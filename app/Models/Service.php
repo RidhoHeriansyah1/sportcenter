@@ -11,7 +11,7 @@ class Service extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = "services";
+    // protected $table = "services";
     protected $fillable = ['name', 'venue_id', 'image', 'description'];
 
     public function venue()

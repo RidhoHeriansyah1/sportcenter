@@ -12,6 +12,6 @@ class Room extends Model
     use SoftDeletes;
 
     // protected $table = "rooms";
-    // protected $fillable = ['room_number', 'price', 'service_id', 'venue_id', 'partner_id', 'time_start', 'time_end'];
+    protected $fillable = ['room_number', 'price', 'service_id', 'venue_id', 'partner_id', 'time_start', 'time_end'];
 
 }
