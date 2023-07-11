@@ -10,6 +10,6 @@ class Amenity extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = "amenities";
+    // protected $table = "amenities";
     protected $fillable = ['name', 'status'];
 }

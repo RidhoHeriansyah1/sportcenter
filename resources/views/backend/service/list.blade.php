@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 
 @section('content')
-{{-- Judul Page --}}
+    {{-- Judul Page --}}
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -57,21 +57,21 @@
                             <td>{{ $item->description }}</td>
                             <td>
                                 <div class="d-flex gap-2">
-
-                                                <div class="edit">
-                                                    <a href="{{ route('backend.service.edit', $item->id) }}" class="btn btn-sm btn-success edit-item-btn"><i
-                                                            class="ri-pencil-fill align-bottom me-2"></i>
-                                                        Edit</a>
-                                                </div>
-                                                <div class="remove">
-                                                    <button type="button" class="btn btn-sm btn-danger delete-item-btn"
-                                                        data-bs-toggle="modal" id="hapus-btn"
-                                                        data-bs-target="#hapusModal{{ $item->id }}"><i
-                                                            class="ri-delete-bin-fill align-bottom me-2"></i>
-                                                        Delete</button>
-                                                </div>
-                                        </ul>
+                                    <div class="edit">
+                                        <a href="{{ route('backend.service.edit', $item->id) }}"
+                                            class="btn btn-sm btn-success edit-item-btn"><i
+                                                class="ri-pencil-fill align-bottom me-2"></i>
+                                            Edit</a>
                                     </div>
+                                    <div class="remove">
+                                        <button type="button" class="btn btn-sm btn-danger delete-item-btn"
+                                            data-bs-toggle="modal" id="hapus-btn"
+                                            data-bs-target="#hapusModal{{ $item->id }}"><i
+                                                class="ri-delete-bin-fill align-bottom me-2"></i>
+                                            Delete</button>
+                                    </div>
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -83,7 +83,7 @@
     </div>
     {{-- End Card --}}
 
-{{-- Modal Hapus --}}
+    {{-- Modal Hapus --}}
     @foreach ($data as $item)
         <div id="hapusModal{{ $item->id }}" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -103,7 +103,7 @@
                         </div>
                         <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
                             {{-- <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button> --}}
-                            <form action="{{ route('backend.service.destroy', $item->id)}}" method="POST">
+                            <form action="{{ route('backend.service.destroy', $item->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
@@ -115,8 +115,6 @@
                 </div>
             </div>
         </div>
-{{-- End Modal Hapus --}}
-
-@endforeach
+        {{-- End Modal Hapus --}}
+    @endforeach
 @endsection
-

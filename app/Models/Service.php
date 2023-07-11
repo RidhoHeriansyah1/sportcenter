@@ -18,4 +18,11 @@ class Service extends Model
     {
         return $this->belongsTo(Venues::class);
     }
+    public function rm()
+    {
+        return $this->belongsTo(Room::class);
+    }
+    public function amenities(){
+        return $this->belongsToMany(Amenity::class, 'service_amenities', 'service_id', 'amenity_id')->withTimestamps();
+    }
 }

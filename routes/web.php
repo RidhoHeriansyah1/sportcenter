@@ -87,7 +87,7 @@ Route::prefix('backend')->group(function () {
     Route::post('/service/store', [App\Http\Controllers\Backend\ServiceController::class, 'store'])->name('backend.service.store')->middleware(['auth','is_admin']);
     Route::get('/service/{id}/edit', [App\Http\Controllers\Backend\ServiceController::class, 'edit'])->name('backend.service.edit')->middleware(['auth','is_admin']);
     Route::put('/service/{id}', [App\Http\Controllers\Backend\ServiceController::class, 'update'])->name('backend.service.update')->middleware(['auth','is_admin']);
-    Route::delete('/servuce/{id}', [App\Http\Controllers\Backend\ServiceController::class, 'destroy'])->name('backend.service.destroy')->middleware(['auth','is_admin']);
+    Route::delete('/service/{id}', [App\Http\Controllers\Backend\ServiceController::class, 'destroy'])->name('backend.service.destroy')->middleware(['auth','is_admin']);
 });
 
 /*

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Amenity;
 use App\Models\Partner;
 use App\Models\Room;
 use App\Models\Service;
@@ -36,10 +37,11 @@ class ServiceController extends Controller
     {
         $venue = Venues::all();
         $partner = Partner::all();
+        $amenity = Amenity::all();
         $service = Service::all();
         return view(
             'backend.service.create',
-            compact('venue', 'partner', 'service')
+            compact('venue', 'amenity', 'partner', 'service')
         );
     }
 
@@ -76,14 +78,6 @@ class ServiceController extends Controller
         $image_name = date('ymdhis') . '.' . $image_extension;
         $image_file->move(public_path('/admin/category/image'), $image_name);
 
-        // $data = [
-        //     'name' => $request->input('name'),
-        //     'venue_id' => $request->input('venue_id'),
-        //     'image' => $image_name,
-        //     'description' => $request->input('description'),
-        // ];
-
-
         $services = new Service();
         $services->name = $request->name;
         $services->venue_id = $request->venue_id;
@@ -91,29 +85,25 @@ class ServiceController extends Controller
         $services->description = $request->description;
         $services->save();
 
-        $room = new Room();
-        $room->room_number = $request->room_number;
-        $room->price = $request->price;
-        $room->service_id = $services->id;
-        $room->venue_id = $request->venue_id;
-        $room->partner_id = $request->partner_id;
-        $room->time_start = $request->time_start;
-        $room->time_end = $request->time_end;
-        $room->save();
+        // $amenity = new Amenity();
+        // $amenity->name = $request->name;
+        // $amenity->status = $request->status;
+        // $amenity->save();
 
-        // $data = $request->all();
-        //     foreach ($data ['room_number'] as $item => $value){
-        //         $data2 = array(
-        //             'room_number' => $data['room_number'][$item],
-        //             'price' => $data['price'][$item],
-        //             'service_id' => $services->id,
-        //             'venue_id' => $data['venue_id'],
-        //             'partner_id' => $data['partner_id'][$item],
-        //             'time_start' => $data['time_start'][$item],
-        //             'time_end' => $data['time_end'][$item],
-        //         );
-        //         Room::create($data2);
-        //     }
+        $services->amenities()->sync($request->amenities);
+        if($request->room_number){
+        foreach ($request->room_number as $key => $roomNumber) {
+            $room = new Room();
+            $room->room_number = $roomNumber;
+            $room->price = $request->price[$key];
+            $room->service_id = $services->id;
+            $room->venue_id = $request->venue_id;
+            $room->partner_id = $request->partner_id[$key];
+            $room->time_start = $request->time_start[$key];
+            $room->time_end = $request->time_end[$key];
+            $room->save();
+        }
+    }
         return redirect()
             ->route('backend.service.list')
             ->with('success', 'Data Berhasil Di Tambahkan');
@@ -141,10 +131,13 @@ class ServiceController extends Controller
         $venue = Venues::all();
         $partner = Partner::all();
         $service = Service::all();
-        $data = Service::where('id', $id)->first();
+        $amenity = Amenity::all();
+        $data = Service::with('amenities')->where('id', $id)->first();
+        $room = Room::where('service_id', $id)->get();
+
         return view(
             'backend.service.edit',
-            compact('data', 'venue', 'partner', 'service')
+            compact('data', 'room', 'amenity', 'venue', 'partner', 'service')
         );
     }
 
@@ -172,11 +165,6 @@ class ServiceController extends Controller
                 'description.required' => 'Deskripsi Wajib Diisi',
             ]
         );
-        $data = [
-            'name' => $request->input('name'),
-            'venue_id' => $request->input('venue_id'),
-            'description' => $request->input('description'),
-        ];
         if ($request->hasFile('image')) {
             $request->validate([
                 'image' => 'mimes:png,jpg,jpeg,gif',
@@ -193,12 +181,32 @@ class ServiceController extends Controller
             File::delete(
                 public_path('/admin/category/image') . '/' . $data_image->image
             );
-            $data = [
-                'image' => $image_name,
-            ];
         }
 
-        Service::where('id', $id)->update($data);
+            $services = new Service();
+            $services->name = $request->name;
+            $services->venue_id = $request->venue_id;
+            $services->image = $image_name;
+            $services->description = $request->description;
+            $services->save();
+
+            $services->amenities()->sync($request->amenities);
+            if($request->room_number){
+                foreach ($request->room_number as $key => $roomNumber) {
+                    $room = new Room();
+                    $room->room_number = $roomNumber;
+                    $room->price = $request->price[$key];
+                    $room->service_id = $services->id;
+                    $room->venue_id = $request->venue_id;
+                    $room->partner_id = $request->partner_id[$key];
+                    $room->time_start = $request->time_start[$key];
+                    $room->time_end = $request->time_end[$key];
+                    $room->save();
+                }
+
+
+        }
+
         return redirect()
             ->route('backend.service.list')
             ->with('success', 'Data Berhasil Di Update');
@@ -215,6 +223,7 @@ class ServiceController extends Controller
         $data = Service::where('id', $id)->first();
         File::delete(public_path('admin/category/image') . '/' . $data->image);
         Service::where('id', $id)->delete();
+        Room::where('service_id', $id)->delete();
         return redirect()
             ->route('backend.service.list')
             ->with('success', 'Data Berhasil Di Hapus');
