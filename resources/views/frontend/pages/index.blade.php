@@ -18,11 +18,8 @@
                 </div>
                 <h3>Find some of the best tips from around the city from our partners and friends.</h3>
             </div>
-
             <!-- main-search-input-tabs-->
             <div class="main-search-input-tabs  tabs-act fl-wrap">
-
-
                 <!--tabs -->
                 <div class="tabs-container fl-wrap">
                     <!--tab -->
@@ -60,7 +57,6 @@
                 </div>
                 <!--tabs end-->
             </div>
-
             <!-- main-search-input-tabs end-->
         </div>
         <div class="header-sec-link">
@@ -73,100 +69,101 @@
         <div class="container">
             <div class="section-title">
                 <h2>Explore Best Cities</h2>
-                <div class="section-subtitle">Catalog of Categories</div>
+                <div class="section-subtitle"> Categories</div>
                 <span class="section-separator"></span>
-                <p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus.</p>
+                {{-- <p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus.</p> --}}
             </div>
-                    @foreach ($category as $category)
             <div class="listing-item-grid_container fl-wrap">
                 <div class="row">
-                    <!--  listing-item-grid  -->
-                    <div class="col-sm-4">
-                        <div class="listing-item-grid">
-                            <div class="bg" data-bg="{{ url('admin/category/image'). '/' . $category->image }}"></div>
-                            <div class="d-gr-sec"></div>
-                            <div class="listing-item-grid_title">
-                                <h3><a href="listing.html">{{ $category->name }}</a></h3>
-                                <p>Constant care and attention to the patients makes good record</p>
+                    @foreach ($location as $location)
+                        <!--  listing-item-grid  -->
+                        <div class="col-sm-4">
+                            <div class="listing-item-grid">
+                                <div class="bg" data-bg="{{ url('admin/location/image') . '/' . $location->image }}">
+                                </div>
+                                <div class="d-gr-sec"></div>
+                                <div class="listing-item-grid_title">
+                                    <h3><a href="listing.html">{{ $location->name }}</a></h3>
+                                    <p>Constant care and attention to the patients makes good record</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--  listing-item-grid end  -->
-
-
+                        <!--  listing-item-grid end  -->
+                    @endforeach
                 </div>
             </div>
-             @endforeach
-            <a href="listing.html" class="btn dec_btn color2-bg">View All Cities<i
-                    class="fal fa-arrow-alt-right"></i></a>
+            <a href="listing.html" class="btn dec_btn color2-bg">View All Cities<i class="fal fa-arrow-alt-right"></i></a>
         </div>
     </section>
+
     <!--section-->
     <section>
         <div class="container big-container">
             <div class="section-title">
-                <h2><span>Most Popular Palces</span></h2>
-                <div class="section-subtitle">Best Listings</div>
+                <h2><span>Services</span></h2>
+                <div class="section-subtitle">Best Services </div>
                 <span class="section-separator"></span>
-                <p>Proin dapibus nisl ornare diam varius tempus. Aenean a quam luctus, finibus tellus ut, convallis eros
-                    sollicitudin turpis.</p>
+                {{-- <p>Proin dapibus nisl ornare diam varius tempus. Aenean a quam luctus, finibus tellus ut, convallis eros
+                    sollicitudin turpis.</p> --}}
             </div>
-            <div class="listing-filters gallery-filters fl-wrap">
+            {{-- <div class="listing-filters gallery-filters fl-wrap">
                 <a href="#" class="gallery-filter  gallery-filter-active" data-filter="*">All Categories</a>
                 <a href="#" class="gallery-filter" data-filter=".restaurant">Restaurants </a>
                 <a href="#" class="gallery-filter" data-filter=".hotels">Hotels</a>
                 <a href="#" class="gallery-filter" data-filter=".events">Events</a>
                 <a href="#" class="gallery-filter" data-filter=".fitness">Fitness</a>
-            </div>
+            </div> --}}
             <div class="row">
-            @foreach ($data as $location)
             <div class="grid-item-holder gallery-items fl-wrap">
-                <!--  gallery-item-->
-                <div class="gallery-item restaurant events">
-                    <!-- listing-item  -->
-                    <div class="listing-item">
-                        <article class="geodir-category-listing fl-wrap">
-                            <div class="geodir-category-img">
-                                <a href="listing-single.html" class="geodir-category-img-wrap fl-wrap">
-                                    <img  src="{{ url('admin/location/image'). '/' . $location->image }}" style="height: 250px; width:330px;" alt="">
-                                </a>
-                                <div class=""><a href="author-single.html"></a>
-                                    <span class="avatar-tooltip">Added By <strong>Alisa Noory</strong></span>
-                                </div>
-                                <div class="geodir-category-opt">
-                                    <div class="listing-rating-count-wrap">
-                                        <br>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                                <div class="geodir-category-content-title fl-wrap">
-                                    <div class="geodir-category-content-title-item">
-                                        <h3 class="title-sin_map"><a href="listing-single.html">{{ $location->name }}</a></h3>
-                                        <div class="geodir-category-location fl-wrap"><a href="#"><i
-                                                    class="fas fa-map-marker-alt"></i> {{ $location->name }}</a>
+                    @foreach ($service as $service)
+                        <!--  gallery-item-->
+                        <div class="gallery-item restaurant events">
+                            <!-- listing-item  -->
+                            <div class="listing-item">
+                                <article class="geodir-category-listing fl-wrap">
+                                    <div class="geodir-category-img">
+                                        <a href="{{ route('frontend.detail.show', $service->id) }}"
+                                            class="geodir-category-img-wrap fl-wrap">
+                                            <img src="{{ url('admin/category/image') . '/' . $service->image }}"
+                                                style="max-width:400px;max-height:190px;" alt="">
+                                        </a>
+                                        <div class=""><a href="author-single.html"></a>
+                                            <span class="avatar-tooltip">Added By <strong>Alisa Noory</strong></span>
+                                        </div>
+                                        <div class="geodir-category-opt">
+                                            <div class="listing-rating-count-wrap">
+                                                <br>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="geodir-category-text fl-wrap">
-                                    <p class="small-text">Sed interdum metus at nisi tempor laoreet. Integer gravida orci a
-                                        justo sodales.</p>
-                                    <div class="facilities-list fl-wrap">
+                                    <div class="geodir-category-content fl-wrap title-sin_item">
+                                        <div class="geodir-category-content-title fl-wrap">
+                                            <div class="geodir-category-content-title-item">
+                                                <h3 class="title-sin_map"><a
+                                                        href="{{ route('frontend.detail.show', $service->id) }}">{{ $service->name }}</a>
+                                                </h3>
+                                                <div class="geodir-category-location fl-wrap"><a
+                                                        href="{{ route('frontend.detail.show', $service->id) }}"><i
+                                                            class="fas fa-map-marker-alt"></i> {{ $service->name }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="geodir-category-text fl-wrap">
+                                            <p class="small-text">{{ $service->description }}</p>
+                                            <div class="facilities-list fl-wrap">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-
+                                </article>
                             </div>
-                        </article>
-                    </div>
-                    <!-- listing-item end -->
+                            <!-- listing-item end -->
+                        </div>
+                        <!-- gallery-item  end-->
+                    @endforeach
                 </div>
-                <!-- gallery-item  end-->
+                <a href="{{ route('frontend.all.service') }}" class="btn  dec_btn  color2-bg">Check All Service<i
+                        class="fal fa-arrow-alt-right"></i></a>
             </div>
-            @endforeach
-        
-            <a href="listing.html" class="btn  dec_btn  color2-bg">Check Out All Listings<i
-                    class="fal fa-arrow-alt-right"></i></a>
-        </div>
     </section>
     <!--content end-->
 @endsection

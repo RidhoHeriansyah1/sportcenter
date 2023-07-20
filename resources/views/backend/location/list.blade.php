@@ -162,7 +162,7 @@
                                     <label for="image" class="form-label">Image</label><br>
                                     <img style="max-width:50px;max-height:50px;" class="mb-2"
                                         src="{{ url('admin/location/image') . '/' . $item->image }}" alt="">
-                                    <input type="file" class="form-control" id="image" required name="image">
+                                    <input type="file" class="form-control" id="image" name="image">
                                 </div>
                             @endif
                             <div>

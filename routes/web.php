@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-
     //templates
    Route::get('/', [App\Http\Controllers\Frontend\DashboardController::class, 'index']);
+   Route::get('/detail/{id}', [App\Http\Controllers\Frontend\DashboardController::class, 'show'])->name('frontend.detail.show');
+   Route::get('/service', [App\Http\Controllers\Frontend\DashboardController::class, 'service'])->name('frontend.all.service');
 
 /*
 |--------------------------------------------------------------------------
