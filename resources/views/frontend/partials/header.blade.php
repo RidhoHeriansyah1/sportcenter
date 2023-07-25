@@ -1,6 +1,7 @@
 <header class="main-header">
     <!-- logo-->
-    <a href="index.html" class="logo-holder"><img src="{{ asset('template/images/logo.png') }}" alt=""></a>
+    <a href="{{ route('frontend.index') }}" class="logo-holder"><img src="{{ asset('template/images/logo.png') }}"
+            alt=""></a>
     <!-- logo end-->
     <!-- header-search_btn-->
     <div class="header-search_btn show-search-button"><i class="fal fa-search"></i><span>Search</span></div>
@@ -33,92 +34,19 @@
         </div>
     </div>
     <!-- nav-button-wrap end-->
-    <!--  navigation -->
-    <div class="nav-holder main-menu">
-        <nav>
-            <ul class="no-list-style">
-                <li>
-                    <a href="#" class="act-link">Home <i class="fa fa-caret-down"></i></a>
-                    <!--second level -->
-                    <ul>
-                        <li><a href="index.html">Parallax Image</a></li>
-                        <li><a href="index2.html">Slider</a></li>
-                        <li><a href="index3.html">Slideshow</a></li>
-                        <li><a href="index4.html">Video</a></li>
-                        <li><a href="index5.html">Map</a></li>
-                    </ul>
-                    <!--second level end-->
-                </li>
-                <li>
-                    <a href="#">Listings <i class="fa fa-caret-down"></i></a>
-                    <!--second level -->
-                    <ul>
-                        <li><a href="listing.html">Column map</a></li>
-                        <li><a href="listing2.html">Column map 2</a></li>
-                        <li><a href="listing3.html">Fullwidth Map</a></li>
-                        <li><a href="listing4.html">Fullwidth Map 2</a></li>
-                        <li><a href="listing5.html">Without Map</a></li>
-                        <li><a href="listing6.html">Without Map 2</a></li>
-                        <li>
-                            <a href="#">Single <i class="fa fa-caret-down"></i></a>
-                            <!--third  level  -->
-                            <ul>
-                                <li><a href="listing-single.html">Style 1</a></li>
-                                <li><a href="listing-single2.html">Style 2</a></li>
-                                <li><a href="listing-single3.html">Style 3</a></li>
-                                <li><a href="listing-single4.html">Style 4</a></li>
-                            </ul>
-                            <!--third  level end-->
-                        </li>
-                    </ul>
-                    <!--second level end-->
-                </li>
-                <li>
-                    <a href="blog.html">News</a>
-                </li>
-                <li>
-                    <a href="#">Pages <i class="fa fa-caret-down"></i></a>
-                    <!--second level -->
-                    <ul>
-                        <li>
-                            <a href="#">Shop<i class="fa fa-caret-down"></i></a>
-                            <!--third  level  -->
-                            <ul>
-                                <li><a href="shop.html">Products</a></li>
-                                <li><a href="product-single.html">Product single</a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                            </ul>
-                            <!--third  level end-->
-                        </li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contacts.html">Contacts</a></li>
-                        <li><a href="author-single.html">User single</a></li>
-                        <li><a href="help.html">How it Works</a></li>
-                        <li><a href="booking.html">Booking</a></li>
-                        <li><a href="pricing-tables.html">Pricing</a></li>
-                        <li><a href="dashboard.html">User Dasboard</a></li>
-                        <li><a href="blog-single.html">Blog Single</a></li>
-                        <li><a href="dashboard-add-listing.html">Add Listing</a></li>
-                        <li><a href="invoice.html">Invoice</a></li>
-                        <li><a href="404.html">404</a></li>
-                    </ul>
-                    <!--second level end-->
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <!-- navigation  end -->
+
     <!--end header-->
 </header>
 <header class="main-header">
     <!-- logo-->
-    <a href="index.html" class="logo-holder"><img src="{{ asset('template/images/logo.png') }}" alt=""></a>
+    <a href="{{ route('frontend.index') }}" class="logo-holder"><img src="{{ asset('template/images/logo.png') }}"
+            alt=""></a>
     <!-- logo end-->
     <!-- header-search_btn-->
     <div class="header-search_btn show-search-button"><i class="fal fa-search"></i><span>Search</span></div>
     <!-- header-search_btn end-->
     <!-- header opt -->
-   
+
     <div class="show-reg-form modal-open avatar-img" data-srcav="images/avatar/3.jpg"><i class="fal fa-user"></i>Sign In
     </div>
     <!-- header opt end-->
@@ -146,71 +74,16 @@
         <nav>
             <ul class="no-list-style">
                 <li>
-                    <a href="#" class="act-link">Home <i class="fa fa-caret-down"></i></a>
-                    <!--second level -->
-                    <ul>
-                        <li><a href="index.html">Parallax Image</a></li>
-                        <li><a href="index2.html">Slider</a></li>
-                        <li><a href="index3.html">Slideshow</a></li>
-                        <li><a href="index4.html">Video</a></li>
-                        <li><a href="index5.html">Map</a></li>
-                    </ul>
-                    <!--second level end-->
+                    <a href="{{ route('frontend.index') }}" class="">Home </i></a>
                 </li>
                 <li>
-                    <a href="#">Listings <i class="fa fa-caret-down"></i></a>
-                    <!--second level -->
-                    <ul>
-                        <li><a href="listing.html">Column map</a></li>
-                        <li><a href="listing2.html">Column map 2</a></li>
-                        <li><a href="listing3.html">Fullwidth Map</a></li>
-                        <li><a href="listing4.html">Fullwidth Map 2</a></li>
-                        <li><a href="listing5.html">Without Map</a></li>
-                        <li><a href="listing6.html">Without Map 2</a></li>
-                        <li>
-                            <a href="#">Single <i class="fa fa-caret-down"></i></a>
-                            <!--third  level  -->
-                            <ul>
-                                <li><a href="listing-single.html">Style 1</a></li>
-                                <li><a href="listing-single2.html">Style 2</a></li>
-                                <li><a href="listing-single3.html">Style 3</a></li>
-                                <li><a href="listing-single4.html">Style 4</a></li>
-                            </ul>
-                            <!--third  level end-->
-                        </li>
-                    </ul>
-                    <!--second level end-->
+                    <a href="{{ route('frontend.all.service') }}">Service </i></a>
                 </li>
                 <li>
-                    <a href="blog.html">News</a>
+                    <a href="{{ route('frontend.all.location') }}">Location</a>
                 </li>
                 <li>
-                    <a href="#">Pages <i class="fa fa-caret-down"></i></a>
-                    <!--second level -->
-                    <ul>
-                        <li>
-                            <a href="#">Shop<i class="fa fa-caret-down"></i></a>
-                            <!--third  level  -->
-                            <ul>
-                                <li><a href="shop.html">Products</a></li>
-                                <li><a href="product-single.html">Product single</a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                            </ul>
-                            <!--third  level end-->
-                        </li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contacts.html">Contacts</a></li>
-                        <li><a href="author-single.html">User single</a></li>
-                        <li><a href="help.html">How it Works</a></li>
-                        <li><a href="booking.html">Booking</a></li>
-                        <li><a href="pricing-tables.html">Pricing</a></li>
-                        <li><a href="dashboard.html">User Dasboard</a></li>
-                        <li><a href="blog-single.html">Blog Single</a></li>
-                        <li><a href="dashboard-add-listing.html">Add Listing</a></li>
-                        <li><a href="invoice.html">Invoice</a></li>
-                        <li><a href="404.html">404</a></li>
-                    </ul>
-                    <!--second level end-->
+                    <a href="#">Pages </i></a>
                 </li>
             </ul>
         </nav>
@@ -221,35 +94,25 @@
     <div class="header-search_container header-search vis-search">
         <div class="container small-container">
             <div class="header-search-input-wrap fl-wrap">
-                <!-- header-search-input -->
-                <div class="header-search-input">
-                    <label><i class="fal fa-keyboard"></i></label>
-                    <input type="text" placeholder="What are you looking for ?" value="" />
-                </div>
-                <!-- header-search-input end -->
-                <!-- header-search-input -->
-                <div class="header-search-input location autocomplete-container">
-                    <label><i class="fal fa-map-marker"></i></label>
-                    <input type="text" placeholder="Location..." class="autocomplete-input" id="autocompleteid2"
-                        value="" />
-                    <a href="#"><i class="fal fa-dot-circle"></i></a>
-                </div>
-                <!-- header-search-input end -->
-                <!-- header-search-input -->
-                <div class="header-search-input header-search_selectinpt ">
-                    <select data-placeholder="Category" class="chosen-select no-radius">
-                        <option>All Categories</option>
-                        <option>All Categories</option>
-                        <option>Shops</option>
-                        <option>Hotels</option>
-                        <option>Restaurants</option>
-                        <option>Fitness</option>
-                        <option>Events</option>
-                    </select>
-                </div>
-                <!-- header-search-input end -->
-                <button class="header-search-button green-bg" onclick="window.location.href='listing.html'"><i
-                        class="far fa-search"></i> Search </button>
+                <form action="{{ route('frontend.search') }}" method="GET">
+                    @csrf
+                    <!-- header-search-input -->
+                    <div class="header-search-input">
+                        <label><i class="fal fa-keyboard"></i></label>
+                        <input type="text" name="search" placeholder="What are you looking for ?" />
+                    </div>
+                    <!-- header-search-input end -->
+                    <!-- header-search-input -->
+                    <div class="header-search-input header-search_selectinpt ">
+                        <select class="chosen-select no-radius" name="filter">
+                            {{-- <option value="0">Filter</option> --}}
+                            <option value="1">Location</option>
+                            <option value="2">Service</option>
+                        </select>
+                    </div>
+                    <!-- header-search-input end -->
+                    <button class="header-search-button green-bg"><i class="far fa-search"></i> Search </button>
+                </form>
             </div>
             <div class="header-search_close color-bg"><i class="fal fa-long-arrow-up"></i></div>
         </div>

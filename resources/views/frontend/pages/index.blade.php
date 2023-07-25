@@ -92,7 +92,8 @@
                     @endforeach
                 </div>
             </div>
-            <a href="listing.html" class="btn dec_btn color2-bg">View All Cities<i class="fal fa-arrow-alt-right"></i></a>
+            <a href="{{ route('frontend.all.location') }}" class="btn dec_btn color2-bg">View All Location<i
+                    class="fal fa-arrow-alt-right"></i></a>
         </div>
     </section>
 
@@ -114,7 +115,7 @@
                 <a href="#" class="gallery-filter" data-filter=".fitness">Fitness</a>
             </div> --}}
             <div class="row">
-            <div class="grid-item-holder gallery-items fl-wrap">
+                <div class="grid-item-holder gallery-items fl-wrap">
                     @foreach ($service as $service)
                         <!--  gallery-item-->
                         <div class="gallery-item restaurant events">

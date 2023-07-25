@@ -11,7 +11,7 @@
             </div> --}}
                 <div class="row">
                     <div class="grid-item-holder gallery-items fl-wrap">
-                        @foreach ($service as $item)
+                        @foreach ($data as $item)
                             <!--  gallery-item-->
                             <div class="gallery-item restaurant events">
                                 <!-- listing-item  -->
@@ -21,6 +21,21 @@
                                             <a href="{{ route('frontend.detail.show', $item->id) }}"
                                                 class="geodir-category-img-wrap fl-wrap">
                                                 <img src="{{ url('admin/category/image') . '/' . $item->image }}"
+                                                    style="max-width:400px;max-height:190px;" alt="">
+                                            </a>
+                                            <div class=""><a href="author-single.html"></a>
+                                                <span class="avatar-tooltip">Added By <strong>Alisa Noory</strong></span>
+                                            </div>
+                                            <div class="geodir-category-opt">
+                                                <div class="listing-rating-count-wrap">
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="geodir-category-img">
+                                            <a href="{{ route('frontend.detail.show', $item->id) }}"
+                                                class="geodir-category-img-wrap fl-wrap">
+                                                <img src="{{ url('admin/location/image') . '/' . $item->image }}"
                                                     style="max-width:400px;max-height:190px;" alt="">
                                             </a>
                                             <div class=""><a href="author-single.html"></a>
@@ -59,7 +74,7 @@
                         @endforeach
                     </div>
                 </div>
-                {{ $service->links() }}
+
         </section>
         <!--content end-->
     @endsection

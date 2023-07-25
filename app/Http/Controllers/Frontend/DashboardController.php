@@ -41,7 +41,33 @@ class DashboardController extends Controller
     }
     public function service()
     {
-        $service = Service::orderBy('id', 'desc')->paginate(2);
-        return view('frontend.pages.list_service', compact('service'));
+        $data = Service::all();
+        return view('frontend.pages.all_data', compact('data'));
+    }
+    public function location()
+    {
+        $data = Location::all();
+        return view('frontend.pages.all_data', compact('data'));
+    }
+
+    public function search(Request $request)
+    {
+        if($request->filter == 1)
+        {
+            $data = Location::where('name', 'LIKE', '%'.$request->search. '%')->get();
+        }
+        elseif($request->filter == 2)
+        {
+            $data = Service::where('name', 'LIKE', '%'.$request->search. '%')->get();
+        }
+        elseif($request->search == "" and $request->filter == 1)
+        {
+            $data = Location::all();
+        }
+        elseif($request->search == "" and $request->filter == 2)
+        {
+            $data = Service::all();
+        }
+        return view('frontend.pages.all_data', compact('data'));
     }
 }
