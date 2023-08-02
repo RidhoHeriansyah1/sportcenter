@@ -6,10 +6,16 @@
             <div class="container big-container">
                 <div class="section-title">
                     @if ($type == 1)
+                    @section('title')
+                    {{'Location'}}
+                    @endsection
                     <h2><span>Location</span></h2>
                     <div class="section-subtitle">Best Location </div>
                     <span class="section-separator"></span>
                     @else
+                    @section('title')
+                    {{'Service'}}
+                    @endsection
                     <h2><span>Services</span></h2>
                     <div class="section-subtitle">Best Services </div>
                     <span class="section-separator"></span>

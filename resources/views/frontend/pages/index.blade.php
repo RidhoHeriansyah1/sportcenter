@@ -1,5 +1,8 @@
 @extends('layouts.frontend')
 
+@section('title')
+{{'Home'}}
+@endsection
 @section('konten')
     <!--conten-->
     <!--section  -->
@@ -28,7 +31,7 @@
                             <div class="main-search-input-wrap fl-wrap">
                                 <div class="main-search-input fl-wrap">
                                     <form action="{{ route('frontend.cari') }}" method="GET">
-                                       
+
                                     <div class="main-search-input-item">
                                         <label><i class="fal fa-keyboard"></i></label>
                                         <input type="text" name="cari" placeholder="What are you looking for?" value="" />
