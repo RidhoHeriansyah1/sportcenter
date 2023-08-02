@@ -20,6 +20,7 @@ Auth::routes();
    Route::get('/service', [App\Http\Controllers\Frontend\DashboardController::class, 'service'])->name('frontend.all.service');
    Route::get('/location', [App\Http\Controllers\Frontend\DashboardController::class, 'location'])->name('frontend.all.location');
    Route::get('/search', [App\Http\Controllers\Frontend\DashboardController::class, 'search'])->name('frontend.search');
+   Route::get('/cari', [App\Http\Controllers\Frontend\DashboardController::class, 'cari'])->name('frontend.cari');
 
 /*
 |--------------------------------------------------------------------------

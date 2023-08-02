@@ -16,8 +16,9 @@ class DashboardController extends Controller
     public function index()
     {
         $service = Service::orderBy('id', 'desc')->paginate(4);
-        $location = Location::all();
-        return view('frontend.pages.index', compact('service', 'location'));
+        $location = Location::paginate(3);
+        $category = category::all();
+        return view('frontend.pages.index', compact('service', 'location', 'category'));
     }
     /**
      * Display the specified resource.
@@ -27,6 +28,7 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
+        // $room = Room::with('venue')->whereHas('venue' , function(use))->get();
         $data = Service::where('id', $id)
             ->with('venue')
             ->first();
@@ -41,33 +43,44 @@ class DashboardController extends Controller
     }
     public function service()
     {
+        $type = 2;
         $data = Service::all();
-        return view('frontend.pages.all_data', compact('data'));
+        return view('frontend.pages.all_data', compact('data' ,'type'));
     }
     public function location()
     {
+        $type = 1;
         $data = Location::all();
-        return view('frontend.pages.all_data', compact('data'));
+        return view('frontend.pages.all_data', compact('data', 'type'));
     }
 
     public function search(Request $request)
     {
-        if($request->filter == 1)
+        $search = $request->search;
+        $filter = $request->filter;
+
+        if($filter == 1 )
         {
-            $data = Location::where('name', 'LIKE', '%'.$request->search. '%')->get();
+            $data = Location::where('name', 'LIKE', '%'.$search. '%')->get();
+            $type = 1;
         }
-        elseif($request->filter == 2)
-        {
-            $data = Service::where('name', 'LIKE', '%'.$request->search. '%')->get();
+        else{
+            $data = Service::where('name', 'LIKE', '%'.$search. '%')->get();
+            $type = 2;
         }
-        elseif($request->search == "" and $request->filter == 1)
-        {
-            $data = Location::all();
-        }
-        elseif($request->search == "" and $request->filter == 2)
-        {
-            $data = Service::all();
-        }
-        return view('frontend.pages.all_data', compact('data'));
+        return view('frontend.pages.all_data', compact('data', 'type'));
+    }
+    public function cari(Request $request)
+    {
+        $category = $request->category;
+        $search = $request->cari;
+        $location = $request->location;
+        $data = Service::with('venue')->whereHas('venue', function($q) use($category, $location){
+            $q->where('category_id', $category);
+            $q->orwhere('location_id', $location);
+        })->where('name', 'LIKE', '%'.$search. '%' )->get();
+
+        $type = 2;
+        return view('frontend.pages.all_data', compact('data', 'type'));
     }
 }

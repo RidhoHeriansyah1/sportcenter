@@ -30,7 +30,7 @@
                                         <select name="partner_id" class="form-control">
                                             <option value="">Select Partner</option>
                                             @foreach ($partner as $partner)
-                                            <option value="{{ $partner->id }}">{{ $partner->name }}</option>
+                                            <option value="{{ $partner->id }}">{{ $partner->fullname }}</option>
                                             @endforeach
                                         </select>
                                     </div>

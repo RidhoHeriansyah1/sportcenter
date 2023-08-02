@@ -95,7 +95,7 @@
         <div class="container small-container">
             <div class="header-search-input-wrap fl-wrap">
                 <form action="{{ route('frontend.search') }}" method="GET">
-                    @csrf
+                   
                     <!-- header-search-input -->
                     <div class="header-search-input">
                         <label><i class="fal fa-keyboard"></i></label>

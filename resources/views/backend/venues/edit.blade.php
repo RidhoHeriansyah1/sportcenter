@@ -29,7 +29,7 @@
                                         <label for="location" class="form-label">Patner ID</label>
                                         <select name="partner_id" class="form-control">
                                             @foreach ($partner as $partner)
-                                            <option value="{{ $partner->id }}" {{ $data->partner_id == $partner->id ? 'selected' : '' }}>{{ $partner->name }}</option>
+                                            <option value="{{ $partner->id }}" {{ $data->partner_id == $partner->id ? 'selected' : '' }}>{{ $partner->fullname }}</option>
                                             @endforeach
                                         </select>
                                     </div>

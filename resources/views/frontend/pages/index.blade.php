@@ -27,29 +27,31 @@
                         <div id="tab-inpt1" class="tab-content first-tab">
                             <div class="main-search-input-wrap fl-wrap">
                                 <div class="main-search-input fl-wrap">
+                                    <form action="{{ route('frontend.cari') }}" method="GET">
+                                       
                                     <div class="main-search-input-item">
                                         <label><i class="fal fa-keyboard"></i></label>
-                                        <input type="text" placeholder="What are you looking for?" value="" />
-                                    </div>
-                                    <div class="main-search-input-item location autocomplete-container">
-                                        <label><i class="fal fa-map-marker-check"></i></label>
-                                        <input type="text" placeholder="Location" class="autocomplete-input"
-                                            id="autocompleteid" value="" />
-                                        <a href="#"><i class="fa fa-dot-circle-o"></i></a>
+                                        <input type="text" name="cari" placeholder="What are you looking for?" value="" />
                                     </div>
                                     <div class="main-search-input-item">
-                                        <select data-placeholder="All Categories" class="chosen-select">
-                                            <option>All Categories</option>
-                                            <option>Shops</option>
-                                            <option>Hotels</option>
-                                            <option>Restaurants</option>
-                                            <option>Fitness</option>
-                                            <option>Events</option>
+                                        <select name="location" class="chosen-select">
+                                            {{-- <option value="0">Select Location</option> --}}
+                                            @foreach ($location as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
-                                    <button class="main-search-button color2-bg"
-                                        onclick="window.location.href='listing.html'">Search <i
+                                    <div class="main-search-input-item">
+                                        <select name="category" class="chosen-select">
+                                            {{-- <option value="0">Select Category</option> --}}
+                                            @foreach ($category as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <button class="main-search-button color2-bg">Search <i
                                             class="far fa-search"></i></button>
+                                        </form>
                                 </div>
                             </div>
                         </div>
