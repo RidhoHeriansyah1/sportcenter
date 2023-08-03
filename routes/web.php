@@ -17,6 +17,7 @@ Auth::routes();
     //templates
    Route::get('/', [App\Http\Controllers\Frontend\DashboardController::class, 'index'])->name('frontend.index');
    Route::get('/detail/{id}', [App\Http\Controllers\Frontend\DashboardController::class, 'show'])->name('frontend.detail.show');
+   Route::get('/detailservice/{id}', [App\Http\Controllers\Frontend\DashboardController::class, 'detailservice'])->name('frontend.detail.service');
    Route::get('/service', [App\Http\Controllers\Frontend\DashboardController::class, 'service'])->name('frontend.all.service');
    Route::get('/location', [App\Http\Controllers\Frontend\DashboardController::class, 'location'])->name('frontend.all.location');
    Route::get('/search', [App\Http\Controllers\Frontend\DashboardController::class, 'search'])->name('frontend.search');

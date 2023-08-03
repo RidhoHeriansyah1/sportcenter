@@ -83,4 +83,12 @@ class DashboardController extends Controller
         $type = 2;
         return view('frontend.pages.all_data', compact('data', 'type'));
     }
+    public function detailservice($id)
+    {
+        $data = Service::with('venue')->whereHas('venue', function($q) use($id){
+            $q->where('location_id', $id);
+        })->get();
+        $location = Location::where('id', $id)->first();
+        return view('frontend.pages.service', compact('data', 'location'));
+    }
 }

@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="d-gr-sec"></div>
                                 <div class="listing-item-grid_title">
-                                    <h3><a href="listing.html">{{ $location->name }}</a></h3>
+                                    <h3><a href="{{ route('frontend.detail.service', $location->id ) }}">{{ $location->name }}</a></h3>
                                     <p>Constant care and attention to the patients makes good record</p>
                                 </div>
                             </div>

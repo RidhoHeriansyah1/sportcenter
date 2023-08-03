@@ -1,4 +1,7 @@
 @extends('layouts.frontend')
+@section('title')
+{{ 'Detail' }}
+@endsection
 @section('konten')
                 <!-- content-->
                 <div class="content">
@@ -75,7 +78,7 @@
                                                     {{-- @foreach ($room as $room)
                                                     <li class="mon">{{ $room->time_start }}-{{ $room->time_end }}</li>
                                                     @endforeach --}}
-                                                    
+
                                                     <li class="mon"><span class="opening-hours-day">Monday </span><span class="opening-hours-time">9 AM - 5 PM</span></li>
                                                     <li class="tue"><span class="opening-hours-day">Tuesday </span><span class="opening-hours-time">9 AM - 5 PM</span></li>
                                                     <li class="wed"><span class="opening-hours-day">Wednesday </span><span class="opening-hours-time">9 AM - 5 PM</span></li>
