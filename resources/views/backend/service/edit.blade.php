@@ -4,6 +4,7 @@
     <form action="{{ route('backend.service.update', $data->id) }}" method="POST" enctype="multipart/form-data">
         <br>
         @csrf
+        {{method_field('put')}}
         <div class="row">
             <div class="col-xl-6">
                 <div class="card shadow mb-4">
@@ -19,9 +20,8 @@
                         <div class="mb-3">
                             <label for="venues" class="form-label">Venue ID</label>
                             <select name="venue_id" class="form-control">
-                                <option value="">Select Venue</option>
                                 @foreach ($venue as $venue)
-                                    <option value="{{ $venue->id }}">{{ $venue->name }}</option>
+                                    <option value="{{ $venue->id }}" {{  $data->venue_id == $venue->id ? 'selected':'' }}>{{ $venue->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -29,7 +29,7 @@
                             <label for="image" class="form-label">Image</label><br>
                             <img style="max-width:50px;max-height:50px;"
                                 src="{{ url('admin/category/image') . '/' . $data->image }}" alt="">
-                            <input type="file" class="form-control" id="image" name="image" required>
+                            <input type="file" class="form-control" id="image" name="image">
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
@@ -49,7 +49,11 @@
                             <div class="mb-3">
                                 <div class="form-check form-check-dark form-check-outline">
                                     <input class="form-check-input" type="checkbox" name="amenities[]"
-                                        value="{{ $amenity->id }}"  {{ str_contains($amenity->id, $data->amenity_id) ? 'checked' : $amenity->id }}>
+                                        value="{{ $amenity->id }}"
+                                        @foreach ($data->amenities as $item)
+                                        {{  $item->id == $amenity->id ? 'checked':'' }}
+                                        @endforeach
+                                        >
                                     <label for="amenity"
                                         class="form-check-label fw-semibold text-capitalize md">{{ $amenity->name }}</label>
                                 </div>
@@ -68,7 +72,53 @@
                 </div>
             </div>
             <div class="card-body">
-                <div id="room"></div>
+                <div id="room">
+                    @foreach ($data->rooms as $room)
+                <div id="row" class="row">
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Room Number</label>
+                            <input type="text" name="old_room_number[]" value="{{ $room->room_number }}" class="form-control" required>
+                        </div>
+                        <input type="hidden" name="old_room_id[]" value="{{ $room->id }}">
+                    </div>
+                    <div class="col-2">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Price</label>
+                            <input type="number" name="old_price[]" value="{{ $room->price }}" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Partner</label>
+                            <input type="text" class="form-control"  value="{{ $room->partner->fullname }}" disabled>
+                            {{-- <select name="old_partner_id[]" class="form-control">
+                                <option value="">Select Partner</option>
+
+                                <option value="{{ $room->id }}"  {{  $room->partner_id == $room->partner->id ? 'selected':'' }}>{{ $room->partner->fullname }}</option>
+
+                            </select> --}}
+                        </div>
+                    </div>
+                <div class="col-2">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Time Start</label>
+                        <input type="time" name="old_time_start[]" value="{{ $room->time_start }}" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Time End</label>
+                        <input type="time" name="old_time_end[]" value="{{ $room->time_end }}" class="form-control" required>
+                    </div>
+                </div>
+                <div class="mb-3 text-end">
+                    <button type="button" id="remove" class="btn btn-outline-danger">
+                        <i class="las la-trash"></i> Remove Room</button>
+                    </div>
+                </div>
+                @endforeach
+                </div>
             </div>
         </div>
         <div class="mb-3 text-center">

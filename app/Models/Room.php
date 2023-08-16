@@ -14,9 +14,13 @@ class Room extends Model
 
     // protected $table = "rooms";
     protected $fillable = ['room_number', 'price', 'service_id', 'venue_id', 'partner_id', 'time_start', 'time_end'];
-    
+
     public function venue()
     {
         return $this->belongsTo(Venues::class);
+    }
+    public function partner()
+    {
+        return $this->belongsTo(Partner::class);
     }
 }

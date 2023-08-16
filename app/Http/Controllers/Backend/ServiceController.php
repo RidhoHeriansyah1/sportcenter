@@ -130,14 +130,11 @@ class ServiceController extends Controller
     {
         $venue = Venues::all();
         $partner = Partner::all();
-        $service = Service::all();
         $amenity = Amenity::all();
-        $data = Service::with('amenities')->where('id', $id)->first();
-        $room = Room::where('service_id', $id)->get();
-
+        $data = Service::where('id', $id)->findOrFail($id);
         return view(
             'backend.service.edit',
-            compact('data', 'room', 'amenity', 'venue', 'partner', 'service')
+            compact('data', 'amenity', 'venue', 'partner')
         );
     }
 
@@ -165,32 +162,49 @@ class ServiceController extends Controller
                 'description.required' => 'Deskripsi Wajib Diisi',
             ]
         );
-        if ($request->hasFile('image')) {
-            $request->validate([
-                'image' => 'mimes:png,jpg,jpeg,gif',
-            ]);
-            $image_file = $request->file('image');
-            $image_extension = $image_file->extension();
-            $image_name = date('ymdhis') . '.' . $image_extension;
-            $image_file->move(
-                public_path('/admin/category/image'),
-                $image_name
-            ); //sudah terupload ke direktori
 
-            $data_image = Service::where('id', $id)->first();
-            File::delete(
-                public_path('/admin/category/image') . '/' . $data_image->image
-            );
-        }
 
-            $services = new Service();
+            $services = Service::findOrFail($id);
             $services->name = $request->name;
             $services->venue_id = $request->venue_id;
-            $services->image = $image_name;
+            if ($request->hasFile('image')) {
+                $request->validate([
+                    'image' => 'mimes:png,jpg,jpeg,gif',
+                ]);
+                $image_file = $request->file('image');
+                $image_extension = $image_file->extension();
+                $image_name = date('ymdhis') . '.' . $image_extension;
+                $image_file->move(
+                    public_path('/admin/category/image'),
+                    $image_name
+                ); //sudah terupload ke direktori
+
+                $data_image = Service::where('id', $id)->first();
+                File::delete(
+                    public_path('/admin/category/image') . '/' . $data_image->image
+                );
+                $services->image = $image_name;
+            }
+
             $services->description = $request->description;
             $services->save();
 
+
             $services->amenities()->sync($request->amenities);
+
+            if($request->old_room_id){
+                foreach ($request->old_room_id as $key => $roomId) {
+                    $room = Room::findOrFail($roomId);
+                    $room->room_number = $request->old_room_number[$key];
+                    $room->price = $request->old_price[$key];
+                    $room->venue_id = $request->venue_id;
+                    // $room->partner_id = $request->old_partner_id[$key];
+                    $room->time_start = $request->old_time_start[$key];
+                    $room->time_end = $request->old_time_end[$key];
+                    $room->save();
+                }
+            }
+
             if($request->room_number){
                 foreach ($request->room_number as $key => $roomNumber) {
                     $room = new Room();
@@ -203,9 +217,7 @@ class ServiceController extends Controller
                     $room->time_end = $request->time_end[$key];
                     $room->save();
                 }
-
-
-        }
+            }
 
         return redirect()
             ->route('backend.service.list')

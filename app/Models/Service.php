@@ -18,9 +18,9 @@ class Service extends Model
     {
         return $this->belongsTo(Venues::class);
     }
-    public function rm()
+    public function rooms()
     {
-        return $this->belongsTo(Room::class);
+        return $this->hasMany(Room::class);
     }
     public function amenities(){
         return $this->belongsToMany(Amenity::class, 'service_amenities', 'service_id', 'amenity_id')->withTimestamps();
