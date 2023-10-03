@@ -68,6 +68,7 @@
                             </div>
                             <!-- listing-item end -->
                         </div>
+                    </div>
                         <!-- gallery-item  end-->
                         @else
                          <!--  gallery-item-->
@@ -115,9 +116,11 @@
                     </div>
                     <!-- gallery-item  end-->
                         @endif
+
                     @endforeach
                     </div>
                 </div>
         </section>
+    </div>
         <!--content end-->
     @endsection

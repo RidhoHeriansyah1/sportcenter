@@ -75,14 +75,25 @@ class DashboardController extends Controller
         $category = $request->category;
         $search = $request->cari;
         $location = $request->location;
+
         $data = Service::with('venue')->whereHas('venue', function($q) use($category, $location){
             $q->where('category_id', $category);
             $q->orwhere('location_id', $location);
         })->where('name', 'LIKE', '%'.$search. '%' )->get();
 
         $type = 2;
+        if(count($data) > 0)
+        {
         return view('frontend.pages.all_data', compact('data', 'type'));
+        }
+        else
+        {
+            $pesan = 'Maaf, Data tidak ada';
+            $sub_pesan = 'Data yang Anda cari tidak tersedia!';
+            return view('layouts.404', compact('pesan', 'sub_pesan'));
+        }
     }
+
     public function detailservice($id)
     {
         $data = Service::with('venue')->whereHas('venue', function($q) use($id){
